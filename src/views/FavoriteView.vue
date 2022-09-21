@@ -113,7 +113,7 @@ export default {
 .favCart {
   margin-top: 120px;
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
 }
 .cardProduct {
