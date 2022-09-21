@@ -6,23 +6,23 @@
       <h1 class="section-title"><span>contact</span> us</h1>
       <p class="about">
         A company specialized in supplying all kinds of mobile phones with all
-        their accessories Marketing it through software or websites
+        their accessories Marketing it through software or websites.
       </p>
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-12">
           <div class="contact-info">
-            <div class="contact-info-item col-12">
+            <div class="contact-info-item col-lg-4">
               <i class="fas fa-location-arrow"></i>
               <h4>Compant Location</h4>
               <p>199 xyz Yemen</p>
             </div>
-            <div class="contact-info-item col-12">
+            <div class="contact-info-item col-lg-4">
               <i class="fas fa-envelope"></i>
               <h4>Write to us at</h4>
               <p>info@gmail.com</p>
             </div>
-            <div class="contact-info-item col-12">
+            <div class="contact-info-item col-lg-4">
               <i class="fas fa-phone"></i>
               <h4>Call us on</h4>
               <p>(+967)777350652</p>
@@ -75,10 +75,29 @@ export default {
 .section-title {
   color: #000;
   text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 2rem !important;
+  position: relative;
+  padding: 0.5rem;
+  margin: auto;
+  width: fit-content;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--blue-color);
 }
 .about {
+  width: 65% !important;
   text-align: center;
   font-size: 20px;
+  margin: auto;
+  /* width: calc(100% - 10%); */
 }
 #contact {
   margin-top: 80px;
@@ -121,10 +140,11 @@ export default {
   border-radius: 1rem;
 }
 
+/* Icons for form input */
 .contact .row form .inputBox .fa-user,
 .contact .row form .inputBox .fa-envelope,
 .contact .row form .inputBox .fa-phone {
-  color: rgb(173, 19, 19);
+  color: rgb(173, 19, 19) !;
   font-size: 1.2rem;
   margin-left: 10px;
   text-align: center;
@@ -149,35 +169,23 @@ export default {
   display: flex;
   text-align: center;
   justify-content: center;
+  margin: 2rem 0;
 }
 .contact-info-item {
-  position: relative;
-  padding-left: 55px;
-  margin-bottom: 30px;
   display: block;
-}
-@media (max-width: 576px) {
-  .contact-info {
-    display: block;
-  }
 }
 .contact-info-item .fa-phone,
 .contact-info-item .fa-envelope,
 .contact-info-item .fa-location-arrow {
-  border-radius: 50%;
-  font-size: 16px;
-  padding: 10px;
-  color: #00f;
-  border: 1px solid #00f;
-  text-align: center;
-  line-height: 38px;
+  font-size: 23px;
+  color: var(--red-color);
 }
-
 .contact-info-item h4 {
   font-size: 18px;
   font-weight: 400;
   margin: 0 0 10px;
-  color: var(--black-900);
+  color: #000;
+  font-weight: 550;
 }
 
 .contact-info-item p {
@@ -185,7 +193,13 @@ export default {
   font-weight: 300;
   margin: 0;
   line-height: 26px;
-  color: var(--black-400);
 }
+
+@media (max-width: 576px) {
+  .contact-info {
+    display: block;
+  }
+}
+
 /* End section contact */
 </style>

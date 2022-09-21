@@ -173,6 +173,18 @@ import { createStore } from 'vuex'
             "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/71HN4P-pd5L._AC_UY218_.jpg",
             "price": 600
         },
+        {
+            "id": 5,
+            "model": "SAMSUNG Galaxy S21 Ultra 5G",
+            "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61bLefD79-L._AC_SX679_.jpg",
+            "price": 1549
+        },
+        {
+            "id": 6,
+            "model": "SAMSUNG Galaxy A53 5G",
+            "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/71HN4P-pd5L._AC_UY218_.jpg",
+            "price": 600
+        }
         
     ],
     apple:[
@@ -212,6 +224,18 @@ import { createStore } from 'vuex'
             "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51cUdVn8N1L._AC_UL320_.jpg",
             "price": 1247
         },
+        {
+            "id": 5,
+            "model": "Apple iPhone 6",
+            "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41gLxTGDHSL._AC_UL320_.jpg",
+            "price": 700
+        },
+        {
+            "id": 6,
+            "model": "Apple iPhone 11 Pro",
+            "image": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51cUdVn8N1L._AC_UL320_.jpg",
+            "price": 1247
+        }
         
     ],
    

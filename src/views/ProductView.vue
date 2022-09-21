@@ -3,17 +3,12 @@
   <div class="container">
     <!-- Samsung Product -->
     <div class="row">
-      <div class="title">
+      <div class="title col-lg-12">
         <div class="img">
-          <img
-            src="../assets/samsung-logo.png"
-            alt="samsung"
-            width="400"
-            height="120"
-          />
+          <img src="../assets/samsung-logo.png" alt="samsung" />
         </div>
         <div class="showAll">
-          <a href=""> Show more</a>
+          <a href=""> Show All</a>
         </div>
       </div>
     </div>
@@ -34,15 +29,10 @@
     <div class="row">
       <div class="title">
         <div class="img">
-          <img
-            src="../assets/apple_logo.png"
-            alt="samsung"
-            width="350"
-            height="120"
-          />
+          <img src="../assets/apple_logo.png" alt="samsung" />
         </div>
         <div class="showAll">
-          <a href=""> Show more</a>
+          <a href=""> Show All</a>
         </div>
       </div>
     </div>
@@ -63,22 +53,17 @@
     <div class="row">
       <div class="title">
         <div class="img handfree">
-          <img
-            src="../assets/handsfree.png"
-            alt="samsung"
-            width="200"
-            height="120"
-          />
+          <img src="../assets/handsfree.png" alt="samsung" />
           <h5 class="handfree">HandsFree</h5>
         </div>
         <div class="showAll">
-          <a href=""> Show more</a>
+          <a href=""> Show All</a>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <div class="appleCard">
+        <div class="handsfree">
           <CardProduct
             v-for="handfree in handsfree"
             :key="handfree.id"
@@ -119,18 +104,19 @@ export default {
   display: flex !important;
   text-align: center !important;
   justify-content: space-evenly !important;
-  margin-top: 6rem;
+  margin-top: 5.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  background: #ddd;
+  background: rgba($color: #5bafe5, $alpha: 0.5);
   height: 90px;
   overflow: hidden;
 
   .img {
+    width: auto;
     text-align: center;
     display: flex;
     img {
-      height: 100%;
+      height: auto;
     }
     .handfree {
       color: #000;
@@ -141,16 +127,57 @@ export default {
     }
   }
   .showAll {
-    background: #ccc;
     margin: auto;
     margin-right: 5%;
     padding: 0.3rem;
   }
+  a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
 .samsungCard,
+.handsfree,
 .appleCard {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+@media (max-width: 991px) {
+  .title {
+    margin-top: 7.5rem;
+  }
+  .img {
+    width: 35% !important;
+    // height: fit-content;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .samsungCard,
+  .handsfree,
+  .appleCard {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
+}
+@media (max-width: 576px) {
+  .img {
+    width: 40% !important;
+    height: 70px;
+    margin: auto;
+  }
+  .img img {
+    width: 100%;
+    height: 100%;
+  }
+  .handfree {
+    display: none;
+  }
 }
 </style>
