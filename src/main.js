@@ -6,6 +6,9 @@ import '../node_modules/hover.css/css/hover-min.css'
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/scss/main.scss";
+// import axios from "../node_modules/axios";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import store from './components/store/store';
 // Animation with scroll
 import AOS from 'aos';
@@ -29,4 +32,6 @@ const app = createApp(App)
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router)
 app.use(store)
+app.use(VueAxios, axios)
+app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
 app.mount('#app')

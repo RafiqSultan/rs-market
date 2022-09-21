@@ -38,9 +38,14 @@
 <!-- Script js data -->
 <script>
 export default {
+  provide: {
+    countNum: 0,
+  },
   props: ["phoneTitle", "phoneImg", "phonePrice", "disc"],
   data() {
-    return {};
+    return {
+      noCart: 0,
+    };
   },
   methods: {
     dicountPrice(price, discount) {
@@ -63,7 +68,7 @@ export default {
           }),
         }
       );
-      this.$store.commit("inCart", 1);
+      countNum++;
     },
     // Add to Favorite menu
     addToFav() {

@@ -245,7 +245,7 @@ import { createStore } from 'vuex'
 // Getter---------
 getters:{
     // return number of cartItem
-    numberOfCart(state){
+    lenCart(){
        return state.cartItemNumber.length;
     },
 },

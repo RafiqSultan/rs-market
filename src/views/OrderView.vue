@@ -56,7 +56,7 @@
     <div class="noorder">
       <img src="../assets/cart.webp" alt="no order" />
       <h1>No Order Now</h1>
-      <router-link tag="a" to="/product">Shop Now</router-link>
+      <router-link tag="a" to="/products">Shop Now</router-link>
     </div>
   </div>
   <TheFooter />

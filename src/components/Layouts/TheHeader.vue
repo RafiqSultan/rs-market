@@ -77,12 +77,7 @@
                   id="search-btn"
                   @click="showLayout('search')"
                 >
-                  <i
-                    class="fas fa-search"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="bottom"
-                    title="Search"
-                  ></i>
+                  <i class="fas fa-search" title="Search"></i>
                 </div>
                 <!-- favorite -->
                 <router-link
@@ -117,9 +112,8 @@
                       align-items-lg-center
                       justify-content-center
                     "
-                    v-if="cartNumber > 0"
                   >
-                    <span>{{ cartNumber }}</span>
+                    <span>{{ num }}</span>
                   </div>
                 </div>
                 <!-- Profile Icon -->
@@ -154,7 +148,7 @@
               placeholder="Search for..."
             />
             <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
+              <i class="fas fa-magnifying-glass"></i>
             </button>
           </div>
         </div>
@@ -169,7 +163,8 @@
             </li>
             <li>
               <router-link tag="a" to="/login"
-                ><i class="fa fa-box-arrow-right"></i>logout</router-link
+                ><i class="fa-solid fa-right-from-bracket"></i
+                >logout</router-link
               >
             </li>
           </ul>
@@ -186,6 +181,7 @@
 <script>
 import CartItem from "../CartItem.vue";
 export default {
+  inject: ["countNum"],
   components: {
     CartItem,
   },
@@ -199,6 +195,11 @@ export default {
       showCart: null,
       cartNumber: 0,
     };
+  },
+  computed: {
+    num() {
+      return this.itemCart.length;
+    },
   },
   methods: {
     showLayout(option) {
@@ -247,28 +248,33 @@ export default {
       } else if (this.showCart == null) {
         this.showCart = "show";
       }
-      fetch(
-        "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
-      )
-        .then((Response) => {
-          if (Response.ok) {
-            return Response.json();
-          }
-        })
-        .then((data) => {
-          const results = [];
-          for (const id in data) {
-            results.push({
-              id: id,
-              phoneImg: data[id].img,
-              phoneModel: data[id].model,
-              phonePrice: data[id].price,
-            });
-          }
-          this.itemCart = results;
-          this.cartNumber = results.length;
-        });
     },
+  },
+  mounted() {
+    console.log("heeeeeeeeeeder");
+    console.log(this.countNum);
+    console.log(this.$store.state.cartItemNumber);
+    fetch(
+      "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
+    )
+      .then((Response) => {
+        if (Response.ok) {
+          return Response.json();
+        }
+      })
+      .then((data) => {
+        const results = [];
+        for (const id in data) {
+          results.push({
+            id: id,
+            phoneImg: data[id].img,
+            phoneModel: data[id].model,
+            phonePrice: data[id].price,
+          });
+        }
+        this.itemCart = results;
+        // this.cartNumber = results.length;
+      });
   },
 };
 </script>
@@ -321,30 +327,32 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  opacity: 0.9;
+  opacity: 1;
 }
 .user-setting .icons .fa-heart {
   color: #000 !important;
 }
 .sec-navbar .user-setting .icons .fa-circle-user:hover,
 .sec-navbar .user-setting .icons .fa-cart-shopping:hover,
-.sec-navbar .user-setting .icons .fa-search:hover,
+.sec-navbar .user-setting .icons .fa-magnifying-glass:hover,
 .sec-navbar .user-setting .icons .fa-heart:hover {
   color: var(--red-color) !important;
 }
 .sec-navbar .user-setting .icons .cart {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  top: -10px;
-  left: -10px;
-  background-color: #f00 !important;
+  width: 23px;
+  height: 23px;
+  top: -8px;
+  left: -5px;
+  background-color: var(--red-color) !important;
   z-index: 1000;
   border-radius: 50%;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 550;
   padding: 5px;
-  line-height: 10px;
+  line-height: 17px;
+  color: #fff;
 }
 
 /*  search -form */
@@ -369,12 +377,16 @@ export default {
 }
 
 .sec-navbar .search button {
-  background-color: #5e3eeb;
-  border: 1px solid #5e3eeb;
+  background-color: var(--red-color);
+  border: none;
+  margin-right: 0;
+}
+.sec-navbar .search button:hover {
+  background-color: var(--btn-color);
   margin-right: 0;
 }
 
-.sec-navbar .search button .fa-search {
+.sec-navbar .search button .fa-magnifying-glass {
   font-size: 22px !important;
 }
 
@@ -428,10 +440,11 @@ export default {
   margin-left: 10px;
 }
 
-.sec-navbar .profile_form i {
+.sec-navbar .profile_form .fa-user,
+.sec-navbar .profile_form .fa-right-from-bracket {
   color: #000 !important;
   font-size: 18px;
-  margin-right: 15px;
+  margin-right: 6px;
 }
 
 .sec-navbar .profile_form li:hover a,

@@ -27,11 +27,7 @@
     </div>
     <!-- Cart Order Buy -->
 
-    <div
-      class="row cartItem"
-      v-for="(item, index) in resultCartItem"
-      :key="item.id"
-    >
+    <div class="row cartItem" v-for="item in resultCartItem" :key="item.id">
       <div class="col-lg-2 col-md-2 col-sm-2 col-2">
         <div class="img">
           <img :src="item.phoneImg" alt="" />
@@ -200,8 +196,6 @@ export default {
       order.totalPrice = order.phoneQuantity * order.phonePrice;
       index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
       this.resultCartItem[index].push(order);
-
-      console.log(typeof this.resultCartItem);
     },
     // Decrese the Quantity
     minusQuantity(order) {
@@ -272,8 +266,10 @@ export default {
           });
         }
         this.resultCartItem = results;
-        console.log(typeof this.resultCartItem);
+        // console.log(typeof this.resultCartItem);
       });
+
+    //
   },
 };
 </script>
