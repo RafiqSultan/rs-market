@@ -53,7 +53,7 @@
             <input type="number" placeholder="number" />
           </div>
 
-          <input type="submit" value="contact now" class="buzz" />
+          <input type="submit" value="contact now" class="btn buzz" />
         </form>
       </div>
     </div>
@@ -79,7 +79,7 @@ export default {
   font-size: 3rem;
   margin-bottom: 2rem !important;
   position: relative;
-  padding: 0.5rem;
+  padding: 0.3rem;
   margin: auto;
   width: fit-content;
 }
@@ -87,10 +87,10 @@ export default {
   content: "";
   position: absolute;
   width: 100%;
-  height: 4px;
+  height: 3px;
   left: 0;
   bottom: 0;
-  background-color: var(--blue-color);
+  background-color: var(--red-color);
 }
 .about {
   width: 65% !important;
@@ -108,27 +108,25 @@ export default {
   flex-wrap: nowrap;
   gap: 10px;
 }
-@media (max-width: 780px) {
-  .contact .row {
-    display: block !important;
-  }
-}
+
 .contact .row .map {
   flex: 1 1 45rem;
   width: 100%;
   object-fit: cover;
   height: 400px;
+  margin: 5rem 0;
 }
 
 .contact .row form {
   flex: 1 1 45rem;
   text-align: center;
+  margin: 5rem 0;
 }
 
 .contact .row form h3 {
   text-transform: uppercase;
-  font-size: 3rem;
-  color: #fff;
+  font-size: 2rem;
+  color: #000;
 }
 
 .contact .row form .inputBox {
@@ -136,15 +134,21 @@ export default {
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background: rgb(177, 143, 143);
-  border-radius: 1rem;
+  background: #fff;
+  border-radius: 0.6rem;
+  color: #000;
+}
+.contact .row form .inputBox input:focus {
+  border: none !important;
+  outline: none !important;
+  color: #000;
 }
 
 /* Icons for form input */
 .contact .row form .inputBox .fa-user,
 .contact .row form .inputBox .fa-envelope,
 .contact .row form .inputBox .fa-phone {
-  color: rgb(173, 19, 19) !;
+  color: var(--red-color);
   font-size: 1.2rem;
   margin-left: 10px;
   text-align: center;
@@ -160,15 +164,20 @@ export default {
   border: none;
 }
 .btn {
-  background-color: #000;
+  background-color: var(--red-color);
   padding: 10px;
   color: #fff;
+  text-transform: capitalize;
+}
+.btn:hover {
+  background-color: var(--btn-color) !important;
+  color: #fff !important;
 }
 .contact-info {
   width: 100% !important;
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 2rem 0;
 }
 .contact-info-item {
@@ -194,12 +203,36 @@ export default {
   margin: 0;
   line-height: 26px;
 }
-
+@media (max-width: 991px) {
+  .section-title {
+    margin-top: 7rem;
+  }
+  .about {
+    width: 75% !important;
+  }
+  /* .contact-info {
+    justify-content: space-between;
+  } */
+}
 @media (max-width: 576px) {
   .contact-info {
     display: block;
   }
+  .contact-info-item {
+    margin: 1.5rem 0;
+  }
+  .about {
+    width: 100% !important;
+    font-size: 16px;
+  }
 }
-
+@media (max-width: 780px) {
+  .contact .row {
+    display: block !important;
+  }
+  .about {
+    width: 95% !important;
+  }
+}
 /* End section contact */
 </style>
