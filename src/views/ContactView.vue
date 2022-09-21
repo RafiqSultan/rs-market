@@ -82,6 +82,7 @@ export default {
   padding: 0.3rem;
   margin: auto;
   width: fit-content;
+  text-transform: capitalize;
 }
 .section-title::after {
   content: "";
