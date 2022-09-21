@@ -10,7 +10,7 @@
           >
             <img
               class="rounded-circle mt-5"
-              src="https://i.imgur.com/0eg0aG0.jpg"
+              src="../assets/user.png"
               width="90"
             /><span class="font-weight-bold">John Doe</span
             ><span class="text-black-50">john_doe12@bbb.com</span
@@ -95,9 +95,7 @@
               </div>
             </div>
             <div class="mt-5 text-right">
-              <button class="btn btn-primary profile-button" type="button">
-                Save Profile
-              </button>
+              <button class="btn" type="button">Save Profile</button>
             </div>
           </div>
         </div>
@@ -115,9 +113,34 @@ export default { components: { TheHeader, TheFooter } };
 
 <style scoped>
 .title {
-  width: 100%;
+  width: fit-content;
   text-align: center;
-  margin-top: 80px;
+  margin: auto;
+  margin-top: 7rem !important;
+  font-size: 2.5rem !important;
+  font-weight: bold;
+  text-transform: capitalize;
+  position: relative;
+  padding: 0.6rem;
+}
+.title::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--red-color);
+}
+.btn {
+  background-color: var(--red-color);
+  padding: 10px;
+  color: #fff;
+  text-transform: capitalize;
+}
+.btn:hover {
+  background-color: var(--btn-color) !important;
+  color: #fff !important;
 }
 @media (max-width: 991px) {
   .title {

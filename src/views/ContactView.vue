@@ -76,7 +76,7 @@ export default {
   color: #000;
   text-align: center;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem !important;
   position: relative;
   padding: 0.3rem;
