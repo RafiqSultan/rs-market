@@ -11,16 +11,16 @@
             <h3>My Order</h3>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="price">Model</div>
+            <div class="model">Model</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="price">Price</div>
+            <div class="price">Price</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="quantity">Quantity</div>
+            <div class="quantity">Quantity</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="total">State</div>
+            <div class="state">State</div>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <img :src="item.phoneImg" alt="" />
         </div>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-3 col-3">
+      <div class="col-lg-2 col-md-4 col-sm-4 col-6">
         <h5 class="model">{{ item.phoneModel }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-2">
@@ -43,7 +43,7 @@
         <h5 class="price">{{ item.phoneQuantity }}</h5>
       </div>
 
-      <div class="col-lg-2 col-md-2 col-sm-6 col-6">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-12">
         <h5 class="price">OK</h5>
       </div>
     </div>
@@ -160,5 +160,17 @@ export default {
 }
 .img img {
   height: 100%;
+}
+@media (max-width: 768px) {
+  .head .model,
+  .head .price,
+  .head .quantity,
+  .head .state {
+    display: none !important;
+  }
+
+  .head {
+    justify-content: flex-start !important;
+  }
 }
 </style>
