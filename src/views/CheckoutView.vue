@@ -8,19 +8,19 @@
             <h3>Shopping Cart</h3>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="price">Model</div>
+            <div class="model">Model</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="price">Price</div>
+            <div class="price">Price</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="quantity">Quantity</div>
+            <div class="quantity">Quantity</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="total">Total</div>
+            <div class="total">Total</div>
           </div>
           <div class="col-lg-2 col-md-2">
-            <div id="total">Delete</div>
+            <div class="delete">Remove</div>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-6">
-        <h5 class="price"><span>$</span>{{ item.totalPrice }}</h5>
+        <h5 class="total"><span>$</span>{{ item.totalPrice }}</h5>
       </div>
       <div
         class="trash col-lg-2 col-md-2 col-sm-6 col-6"
@@ -147,7 +147,7 @@
               <router-link
                 tag="button"
                 to="/my-order"
-                class="btn-blue"
+                class="btn"
                 @click="saveOrder()"
               >
                 Checkout
@@ -395,23 +395,25 @@ button:focus {
   padding-top: 10px;
 }
 
-.btn-blue {
-  border: none;
-  border-radius: 10px;
-  background-color: #673ab7;
-  color: #fff;
+.btn {
+  background-color: var(--red-color);
   padding: 10px 20px;
-  margin: 20px 0 0 0 !important;
-  cursor: pointer;
-}
-
-.btn-blue:hover {
-  background-color: #311b92;
   color: #fff;
+  text-transform: capitalize;
+}
+.btn:hover {
+  background-color: var(--btn-color) !important;
+  color: #fff !important;
 }
 
 #check-amt {
   float: right;
+}
+@media screen and (max-width: 991px) {
+  .head h3 {
+    font-size: 1.5rem;
+    font-weight: 550;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -433,10 +435,28 @@ button:focus {
   .pad-left {
     padding-left: 20px;
   }
+  .head .model,
+  .head .price,
+  .head .quantity,
+  .head .total,
+  .head .delete {
+    display: none !important;
+  }
+
+  .head {
+    justify-content: flex-start !important;
+  }
 }
 @media screen and (max-width: 576px) {
   .trash {
     text-align: right;
+  }
+  .cartItem .model {
+    font-size: 1rem !important;
+  }
+  .cartItem .total {
+    text-align: left;
+    margin: 0.4rem 0;
   }
 }
 </style>
