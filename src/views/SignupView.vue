@@ -29,14 +29,16 @@
               <h2 class="mb-0 mr-4 mt-2">
                 SignUp <span style="font-size: 20px">with</span>
               </h2>
-              <div class="facebook text-center mr-3">
-                <i class="fab fa-facebook"></i>
-              </div>
-              <div class="twitter text-center mr-3">
-                <div class="fab fa-twitter"></div>
-              </div>
-              <div class="google text-center mr-3">
-                <div class="fab fa-google"></div>
+              <div class="row icons">
+                <div class="facebook text-center mr-3">
+                  <i class="fab fa-facebook"></i>
+                </div>
+                <div class="twitter text-center mr-3">
+                  <div class="fab fa-twitter"></div>
+                </div>
+                <div class="google text-center mr-3">
+                  <div class="fab fa-google"></div>
+                </div>
               </div>
             </div>
             <div class="row px-3">
@@ -45,15 +47,15 @@
               <div class="line"></div>
             </div>
             <form>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Username</h6> </label>
                 <input type="text" name="email" placeholder="Enter username" />
               </div>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Email</h6> </label>
                 <input type="email" name="email" placeholder="Enter email" />
               </div>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Password</h6> </label>
                 <input
                   type="password"
@@ -61,7 +63,7 @@
                   placeholder="Enter Password"
                 />
               </div>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Confirm Password</h6> </label>
                 <input
                   type="password"
@@ -81,7 +83,7 @@
               </div>
             </form>
 
-            <div class="row mb-4 px-3">
+            <div class="row another-register mb-4 px-3">
               <small class="font-weight-bold"
                 >Already have an account:
                 <router-link tag="a" to="/login" class="text-danger"
@@ -258,6 +260,18 @@ a {
   background-color: var(--btn-color) !important;
   color: #fff !important;
 }
+@media (max-width: 1150px) and (min-width: 991px) {
+  .line {
+    height: 1px;
+    width: 40%;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+  }
+  .or {
+    width: 20%;
+    font-weight: bold;
+  }
+}
 @media screen and (max-width: 991px) {
   .logo {
     margin: auto;
@@ -270,6 +284,18 @@ a {
 
   .border-line {
     border-right: none;
+  }
+  .card2 h2 {
+    text-align: center;
+  }
+  .card2 .icons {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .another-register {
+    text-align: center;
   }
 
   .card2 {
@@ -287,6 +313,9 @@ a {
   .or {
     width: 30%;
     font-weight: bold;
+  }
+  .another-register {
+    text-align: center;
   }
 }
 </style>

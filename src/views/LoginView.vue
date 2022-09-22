@@ -276,6 +276,18 @@ a {
   background-color: var(--btn-color) !important;
   color: #fff !important;
 }
+@media (max-width: 1150px) and (min-width: 991px) {
+  .line {
+    height: 1px;
+    width: 40%;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+  }
+  .or {
+    width: 20%;
+    font-weight: bold;
+  }
+}
 @media screen and (max-width: 991px) {
   .logo {
     margin-left: 0px;
