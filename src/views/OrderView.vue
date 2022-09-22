@@ -119,11 +119,18 @@ export default {
   width: 200px;
   height: 200px;
 }
+.noorder h1 {
+  font-size: 35px;
+  margin: 1rem 0;
+}
 .noorder a {
-  background-color: #f00;
+  background-color: var(--red-color);
   color: #fff;
-  padding: 5px 15px;
-  border-radius: 10px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+}
+.noorder a:hover {
+  background-color: var(--btn-color);
 }
 .checkout {
   margin-top: 120px;

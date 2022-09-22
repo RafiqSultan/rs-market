@@ -29,7 +29,7 @@
     <div class="row">
       <div class="title">
         <div class="img">
-          <img src="../assets/apple_logo.png" alt="samsung" />
+          <img src="../assets/apple_logo.png" alt="apple" />
         </div>
         <div class="showAll">
           <a href=""> Show All</a>
@@ -53,7 +53,7 @@
     <div class="row">
       <div class="title">
         <div class="img handfree">
-          <img src="../assets/handsfree.png" alt="samsung" />
+          <img src="../assets/handsfree.png" alt="handfree" />
           <h5 class="handfree">HandsFree</h5>
         </div>
         <div class="showAll">
@@ -110,11 +110,14 @@ export default {
   background: rgba($color: #5bafe5, $alpha: 0.5);
   height: 90px;
   overflow: hidden;
+  border-radius: 10px;
 
   .img {
     width: auto;
+    height: 60px;
     text-align: center;
     display: flex;
+    margin-top: 1%;
     img {
       height: auto;
     }
@@ -129,7 +132,12 @@ export default {
   .showAll {
     margin: auto;
     margin-right: 5%;
-    padding: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--red-color);
+    border-radius: 5px;
+  }
+  .showAll:hover {
+    background-color: var(--btn-color);
   }
   a {
     color: #fff;

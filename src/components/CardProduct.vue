@@ -196,7 +196,7 @@ export default {
       }
     }
     span:hover {
-      color: var(--red-color);
+      color: var(--back-color);
     }
   }
 }
