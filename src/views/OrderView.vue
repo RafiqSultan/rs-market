@@ -8,7 +8,7 @@
       <div class="cart">
         <div class="head">
           <div class="col-lg-2 col-md-2">
-            <h3>My Order</h3>
+            <h3 class="title">My Order</h3>
           </div>
           <div class="col-lg-2 col-md-2">
             <div class="model">Model</div>
@@ -27,9 +27,10 @@
     </div>
     <!-- Cart Order Buy -->
 
-    <div class="row cartItem" v-for="item in myorder" :key="item.id">
+    <div class="row cartItem" v-for="(item, index) in myorder" :key="item.id">
       <div class="col-lg-2 col-md-2 col-sm-2 col-2">
         <div class="img">
+          <span>{{ index + 1 }}-</span>
           <img :src="item.phoneImg" alt="" />
         </div>
       </div>
@@ -141,13 +142,18 @@ export default {
   align-items: center;
   justify-content: center !important;
   padding: 0.8rem;
-  border-bottom: 1px solid #f00;
+  border-bottom: 1px solid var(--red-color);
   text-align: center;
+}
+.head .title {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--red-color);
 }
 /* Style For Cart Order */
 .cartItem {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.8rem 0;
   background-color: #fff;
   box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -163,7 +169,12 @@ export default {
 .img {
   height: 50px;
   overflow: hidden;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.img span {
+  margin-left: 0 !important;
 }
 .img img {
   height: 100%;
