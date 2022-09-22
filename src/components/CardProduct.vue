@@ -10,13 +10,11 @@
           <i class="fa-solid fa-star" v-for="star in 4"></i>
           <i class="fa-solid fa-star-half-stroke"></i>
         </div>
-        <p>
-          <span
-            id="price"
-            v-if="disc > 0 ? 'discountPrice(phonePrice, disc)' : ''"
-            >{{
-          }}</span>
-          <span id="">${{ phonePrice }}</span>
+        <p class="price">
+          <span class="discount" id="">${{ phonePrice }}</span>
+          <span v-if="disc > 0">
+            $ {{ Math.floor(phonePrice - phonePrice * (disc / 100)) }}</span
+          >
         </p>
       </div>
 
@@ -53,13 +51,12 @@ export default {
       noCart: 0,
       isFav: null,
       isCart: null,
+      disco: this.disc,
     };
   },
-  methods: {
-    dicountPrice(price, discount) {
-      return "$" + price - price * (discount / 100);
-    },
-  },
+  // methods: {
+
+  // },
   computed: {
     addToCart() {
       if (this.isCart === null) {
@@ -102,6 +99,15 @@ export default {
         }
       );
     },
+  },
+  mounted() {
+    // dicountPrice(price, discount) {
+    console.log("dddddddddddddisisisisis");
+    console.log(this.disco);
+    // let disco = 0;
+    // disco = this.price - this.price * (this.discount / 100);
+    // console.log(disco);
+    // },
   },
 };
 </script>
@@ -152,11 +158,27 @@ export default {
     line-height: 22px;
     overflow: hidden !important;
   }
-  p {
-    color: var(--blue-color);
+
+  // discount and price
+  .price {
+    color: var(--blue-dark-color);
     margin: auto;
     font-size: 22px;
     font-weight: 500;
+  }
+  .price .discount {
+    margin: 0 0.5rem;
+    font-size: 20px;
+    position: relative;
+  }
+  .price .discount::before {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 2px;
+    left: -8px;
+    top: 50%;
+    background-color: var(--red-color);
   }
   .star {
     .fa-star,
