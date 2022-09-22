@@ -10,8 +10,9 @@
           <i class="fa-solid fa-star" v-for="star in 4"></i>
           <i class="fa-solid fa-star-half-stroke"></i>
         </div>
+
         <p class="price">
-          <span class="discount" id="">${{ phonePrice }}</span>
+          <span :class="{ discount: disc > 0 }" id="">${{ phonePrice }}</span>
           <span v-if="disc > 0">
             $ {{ Math.floor(phonePrice - phonePrice * (disc / 100)) }}</span
           >
@@ -166,12 +167,12 @@ export default {
     font-size: 22px;
     font-weight: 500;
   }
-  .price .discount {
+  .discount {
     margin: 0 0.5rem;
     font-size: 20px;
     position: relative;
   }
-  .price .discount::before {
+  .discount::before {
     content: "";
     position: absolute;
     width: 140%;

@@ -173,19 +173,46 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
   }
-}
-@media (max-width: 576px) {
-  .img {
-    width: 40% !important;
-    height: 70px;
-    margin: auto;
-  }
-  .img img {
-    width: 100%;
-    height: 100%;
+  .title img {
+    width: auto;
+    display: flex;
+    margin-top: 10%;
   }
   .handfree {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    display: flex;
+  }
+  .handfree h5 {
+    text-align: center;
+    margin-top: 25px !important;
+  }
+
+  // img {
+  //   height: auto;
+  // }
+}
+
+@media (max-width: 576px) {
+  .img {
+    width: auto;
+    height: 60px;
+    margin: auto;
+  }
+
+  .handfree img {
     display: none;
+  }
+  .handfree h5 {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 550px) {
+  .appleCard,
+  .samsungCard,
+  .handsfree {
+    margin-left: 20% !important;
+    text-align: center;
   }
 }
 </style>
