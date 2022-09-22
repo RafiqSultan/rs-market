@@ -38,7 +38,7 @@
           loading="lazy"
         ></iframe>
 
-        <form action="">
+        <form action="#">
           <h3>get in touch</h3>
           <div class="inputBox">
             <span class="fas fa-user"></span>
@@ -166,7 +166,8 @@ export default {
 }
 .btn {
   background-color: var(--red-color);
-  padding: 10px;
+  padding: 10px 20px;
+  font-weight: 530;
   color: #fff;
   text-transform: capitalize;
 }

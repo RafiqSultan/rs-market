@@ -223,7 +223,7 @@ textarea:focus {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  border: 1px solid #304ffe;
+  border: 1px solid var(--red-color);
   outline-width: 0;
 }
 
@@ -233,29 +233,30 @@ button:focus {
   box-shadow: none !important;
   outline-width: 0;
 }
-
+.card2 h2 {
+  font-weight: bold;
+}
+.card2 span {
+  font-weight: 300;
+}
 a {
   color: inherit;
   cursor: pointer;
 }
 
-.btn-blue {
-  background-color: #1a237e;
-  width: 150px;
+.btn {
+  background-color: var(--red-color);
+  padding: 8px 40px;
+  font-weight: 500;
   color: #fff;
-  border-radius: 2px;
-  border-radius: 10px;
-  margin-left: -16px !important;
+  width: fit-content;
+  text-transform: capitalize;
+  margin-left: -13px !important;
+  font-size: 18px;
 }
-
-.btn-blue:hover {
-  background-color: #101330 !important;
-  cursor: pointer;
+.btn:hover {
+  background-color: var(--btn-color) !important;
   color: #fff !important;
-}
-
-.bg-blue {
-  background-color: #1a237e;
 }
 @media screen and (max-width: 991px) {
   .logo {
