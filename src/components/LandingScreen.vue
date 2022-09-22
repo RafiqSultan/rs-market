@@ -1,144 +1,153 @@
 <template>
-  <div
-    id="landpageCarousel"
-    class="carousel slide"
-    data-bs-ride="carousel"
-    data-interval="0"
-  >
-    <!-- Indicators/dots -->
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#landpageCarousel"
-        data-bs-slide-to="0"
-        class="active"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#landpageCarousel"
-        data-bs-slide-to="1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#landpageCarousel"
-        data-bs-slide-to="2"
-      ></button>
-    </div>
+  <div class="container-fluid">
+    <div
+      id="landpageCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-interval="0"
+    >
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#landpageCarousel"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#landpageCarousel"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#landpageCarousel"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
 
-    <!-- The slideshow/carousel -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="landing">
-          <div class="land-msg">
-            <div class="upper-msg">
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="landing">
+            <div class="land-msg">
+              <div class="upper-msg">
+                <img src="@/assets/img/brands/apple.svg" alt="" class="logo" />
+                <div class="msg">
+                  <h2>The Apple week is here!</h2>
+                  <h4>Save up to a 40% on MacBook Series this week.</h4>
+                </div>
+                <div class="features">
+                  <p>Supercharged by</p>
+                  <img class="M1" src="@/assets/img/extras/M1Pro.png" alt="" />
+                  <p>and</p>
+                  <img
+                    class="M1"
+                    src="@/assets/img/extras/M1ProMax.png"
+                    alt=""
+                  />
+                </div>
+                <div class="links">
+                  <a href="" class="link">Learn more ></a>
+                  <a href="" class="link">Buy ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="landing">
+            <div class="land-msg">
               <img src="@/assets/img/brands/apple.svg" alt="" class="logo" />
-              <div class="msg">
-                <h2>The Apple week is here!</h2>
-                <h4>Save up to a 40% on MacBook Series this week.</h4>
+              <div class="upper-msg">
+                <h3>
+                  Get <span class="supercharged">supercharged</span> for
+                  college.
+                </h3>
+                <h5>
+                  Save on Mac or iPad. Get in instant gift card up to $150.
+                </h5>
+                <div class="buy-options">
+                  <div class="mac">
+                    <h6>Buy Mac.</h6>
+                    <a href="">Compare models.</a>
+                  </div>
+                  <div class="ipad">
+                    <h6>Buy iPad.</h6>
+                    <a href="">Compare models.</a>
+                  </div>
+                </div>
+                <p>Or</p>
+                <a href="">Explore Apple college accesories</a>
               </div>
-              <div class="features">
-                <p>Supercharged by</p>
-                <img class="M1" src="@/assets/img/extras/M1Pro.png" alt="" />
-                <p>and</p>
-                <img class="M1" src="@/assets/img/extras/M1ProMax.png" alt="" />
-              </div>
-              <div class="links">
-                <a href="" class="link">Learn more ></a>
-                <a href="" class="link">Buy ></a>
-              </div>
+            </div>
+            <div class="land-img">
+              <video
+                src="https://www.apple.com/105/media/us/ipad-air/2022/5abf2ff6-ee5b-4a99-849c-a127722124cc/anim/features/large_2x.mp4"
+                autoplay
+                loop
+              ></video>
             </div>
           </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <div class="landing">
-          <div class="land-msg">
-            <img src="@/assets/img/brands/apple.svg" alt="" class="logo" />
-            <div class="upper-msg">
-              <h3>
-                Get <span class="supercharged">supercharged</span> for college.
-              </h3>
-              <h5>Save on Mac or iPad. Get in instant gift card up to $150.</h5>
-              <div class="buy-options">
-                <div class="mac">
-                  <h6>Buy Mac.</h6>
-                  <a href="">Compare models.</a>
-                </div>
-                <div class="ipad">
-                  <h6>Buy iPad.</h6>
-                  <a href="">Compare models.</a>
-                </div>
+        <div class="carousel-item">
+          <div class="landing">
+            <div class="land-img">
+              <img
+                src="@/assets/img/extras/assistants.png"
+                alt=""
+                class="image"
+              />
+            </div>
+            <div class="land-msg">
+              <div class="brand">
+                <img src="@/assets/img/brands/google.svg" alt="" class="logo" />
+                <h3>vs</h3>
+                <img src="@/assets/img/brands/amazon.svg" alt="" class="logo" />
               </div>
-              <p>Or</p>
-              <a href="">Explore Apple college accesories</a>
-            </div>
-          </div>
-          <div class="land-img">
-            <video
-              src="https://www.apple.com/105/media/us/ipad-air/2022/5abf2ff6-ee5b-4a99-849c-a127722124cc/anim/features/large_2x.mp4"
-              autoplay
-              loop
-            ></video>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="landing">
-          <div class="land-img">
-            <img
-              src="@/assets/img/extras/assistants.png"
-              alt=""
-              class="image"
-            />
-          </div>
-          <div class="land-msg">
-            <div class="brand">
-              <img src="@/assets/img/brands/google.svg" alt="" class="logo" />
-              <h3>vs</h3>
-              <img src="@/assets/img/brands/amazon.svg" alt="" class="logo" />
-            </div>
 
-            <div class="upper-msg">
-              <h3>
-                The war of the <span class="assistants">assistants</span> is
-                here.
-              </h3>
-              <h5>Buy one and get the other for half the price.</h5>
-              <div class="buy-options">
-                <div class="mac">
-                  <h6>Buy Google Devices</h6>
-                  <a href="">Compare models.</a>
+              <div class="upper-msg">
+                <h3>
+                  The war of the <span class="assistants">assistants</span> is
+                  here.
+                </h3>
+                <h5>Buy one and get the other for half the price.</h5>
+                <div class="buy-options">
+                  <div class="mac">
+                    <h6>Buy Google Devices</h6>
+                    <a href="">Compare models.</a>
+                  </div>
+                  <div class="ipad">
+                    <h6>Buy Alexa Devices</h6>
+                    <a href="">Compare models.</a>
+                  </div>
                 </div>
-                <div class="ipad">
-                  <h6>Buy Alexa Devices</h6>
-                  <a href="">Compare models.</a>
-                </div>
+                <p>Or</p>
+                <a href="">Explore smart accesories.</a>
               </div>
-              <p>Or</p>
-              <a href="">Explore smart accesories.</a>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Left and right controls/icons -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#landpageCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#landpageCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
-
-    <!-- Left and right controls/icons -->
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#landpageCarousel"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#landpageCarousel"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon"></span>
-    </button>
   </div>
 </template>
 

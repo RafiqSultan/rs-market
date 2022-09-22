@@ -27,7 +27,8 @@
         <div class="row">
           <div class="col-md-12">
             <h2 class="title">
-              <span class="highlight"><b>New</b></span> Products
+              <span class="highlight"><b>New</b></span
+              >ADs
             </h2>
           </div>
         </div>
@@ -352,8 +353,9 @@ h2::after {
 }
 .show1 img {
   width: 65%;
-  height: 100%;
-  border-radius: 20px !important;
+  height: auto;
+  border-radius: 30px !important;
+  margin-top: 50px;
 }
 .show2 img {
   width: 65%;

@@ -1,43 +1,45 @@
 <template>
-  <Carousel
-    :settings="settings"
-    :breakpoints="breakpoints"
-    class="carousel"
-    v-if="ContentOfCarousel === 'newProduct'"
-  >
-    <CardProduct
-      v-for="newphone in newPhones"
-      :key="newphone"
-      :phoneTitle="newphone.model"
-      :phonePrice="newphone.price"
-      :phoneImg="newphone.image"
-    />
+  <div class="container">
+    <Carousel
+      :settings="settings"
+      :breakpoints="breakpoints"
+      class="carousel"
+      v-if="ContentOfCarousel === 'newProduct'"
+    >
+      <CardProduct
+        v-for="newphone in newPhones"
+        :key="newphone"
+        :phoneTitle="newphone.model"
+        :phonePrice="newphone.price"
+        :phoneImg="newphone.image"
+      />
 
-    <template #addons>
-      <Navigation />
-    </template>
-  </Carousel>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
 
-  <!-- Discount -->
-  <Carousel
-    :settings="settings"
-    :breakpoints="breakpoints"
-    class="carousel"
-    v-if="ContentOfCarousel === 'discount'"
-  >
-    <CardProduct
-      v-for="discount in productDiscount"
-      :key="discount"
-      :phoneTitle="discount.model"
-      :phonePrice="discount.price"
-      :phoneImg="discount.image"
-      :disc="discount.disc"
-    />
+    <!-- Discount -->
+    <Carousel
+      :settings="settings"
+      :breakpoints="breakpoints"
+      class="carousel"
+      v-if="ContentOfCarousel === 'discount'"
+    >
+      <CardProduct
+        v-for="discount in productDiscount"
+        :key="discount"
+        :phoneTitle="discount.model"
+        :phonePrice="discount.price"
+        :phoneImg="discount.image"
+        :disc="discount.disc"
+      />
 
-    <template #addons>
-      <Navigation />
-    </template>
-  </Carousel>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
+  </div>
 </template>
   
   <script>
