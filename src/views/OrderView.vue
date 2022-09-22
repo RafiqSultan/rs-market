@@ -74,7 +74,7 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => this.myorder.length > 0, 3000);
+    // setTimeout(() => this.myorder.length > 0, 3000);
 
     fetch(
       "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json"

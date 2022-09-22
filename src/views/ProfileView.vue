@@ -23,7 +23,7 @@
               <a class="text-right">Edit Profile</a>
             </div>
             <div class="row mt-2">
-              <div class="col-md-6">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -31,7 +31,7 @@
                   value="John"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -40,8 +40,8 @@
                 />
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -49,7 +49,7 @@
                   value="john_doe12@bbb.com"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -58,8 +58,8 @@
                 />
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -67,7 +67,7 @@
                   value="D-113, right avenue block, CA,USA"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -76,8 +76,8 @@
                 />
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -85,7 +85,7 @@
                   value="Bank of America"
                 />
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-2">
                 <input
                   type="text"
                   class="form-control"
@@ -94,7 +94,7 @@
                 />
               </div>
             </div>
-            <div class="mt-5 text-right">
+            <div class="mt-3 text-right">
               <button class="btn" type="button">Save Profile</button>
             </div>
           </div>
@@ -138,14 +138,20 @@ export default { components: { TheHeader, TheFooter } };
   padding: 10px 15px;
   color: #fff;
   text-transform: capitalize;
+  margin-top: 0 !important;
 }
 .btn:hover {
   background-color: var(--btn-color) !important;
   color: #fff !important;
 }
 @media (max-width: 991px) {
+}
+@media (max-width: 768px) {
+  input {
+    margin-bottom: 10px;
+  }
   .title {
-    margin-top: 120px;
+    display: none;
   }
 }
 .profile {
