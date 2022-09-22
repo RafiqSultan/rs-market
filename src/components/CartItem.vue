@@ -3,7 +3,7 @@
     <div class="cart">
       <div class="row">
         <div class="cartItem" v-for="(item, index) in cartItem" :key="item.id">
-          <template v-if="index < 3">
+          <template v-if="index > -3">
             <div class="img">
               <img :src="item.phoneImg" alt="imgcart" />
             </div>
@@ -31,31 +31,34 @@ export default {
 <style scoped>
 .cart {
   width: 250px;
-  max-height: 400px;
+  max-height: 290px;
   position: absolute;
   top: 4rem !important;
   right: 6%;
   background-color: #fff;
-  box-shadow: 0 0 5px #000;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   z-index: 1000;
   padding: 0.3rem;
   overflow: hidden !important;
   padding-bottom: 0 !important;
+  border: none !important;
 }
 .cartItem {
   width: 90%;
+  height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-shadow: 0 0 2px #333;
+  box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
   margin: auto;
-  border: none !important;
-  outline: none !important;
+  border-bottom: 1px solid var(--red-color);
   margin-bottom: 5px !important;
+  padding: 0.2rem;
 }
 .cartItem .img {
   width: 30%;
-  height: 70px;
+  height: 60px;
   overflow: hidden;
 }
 .cartItem .img img {
@@ -63,13 +66,46 @@ export default {
   height: 100%;
 }
 .cartItem .details {
+  height: 100%;
+  width: 100%;
   color: #000;
   margin: 0 10px;
+  font-size: 14px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cartItem .details span:first-child {
+  width: 100%;
+}
+.cartItem .details span:last-child {
+  color: var(--red-color);
+  font-size: 16px;
 }
 .btn_checkout {
-  background-color: blue;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  background-color: var(--red-color);
   text-align: center;
   padding: 0.3rem;
+  font-weight: 500;
+}
+.btn_checkout {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  background-color: var(--red-color);
+  text-align: center;
+  padding: 0.3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn_checkout:hover {
+  background-color: var(--btn-color);
 }
 .btn_checkout a {
   color: #fff;

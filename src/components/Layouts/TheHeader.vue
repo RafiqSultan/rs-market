@@ -284,7 +284,7 @@ export default {
 .sec-navbar {
   color: #000;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   position: fixed;
   top: 0;
   left: 0;
@@ -296,6 +296,7 @@ export default {
 
 .sec-navbar .nav-item a {
   color: #000;
+  font-size: 22px;
   font-weight: 500;
 }
 

@@ -122,6 +122,7 @@ export default { components: { TheHeader, TheFooter } };
   text-transform: capitalize;
   position: relative;
   padding: 0.6rem;
+  letter-spacing: 2px;
 }
 .title::after {
   content: "";
@@ -134,7 +135,7 @@ export default { components: { TheHeader, TheFooter } };
 }
 .btn {
   background-color: var(--red-color);
-  padding: 10px;
+  padding: 10px 15px;
   color: #fff;
   text-transform: capitalize;
 }
@@ -152,22 +153,7 @@ export default { components: { TheHeader, TheFooter } };
 }
 .form-control:focus {
   box-shadow: none;
-  border-color: #ba68c8;
-}
-
-.profile-button {
-  background: #ba68c8;
-  box-shadow: none;
-  border: none;
-}
-
-.profile-button:hover {
-  background: #682773;
-}
-
-.profile-button:focus {
-  background: #682773;
-  box-shadow: none;
+  border-color: var(--red-color);
 }
 
 .profile-button:active {

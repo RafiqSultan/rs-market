@@ -112,16 +112,17 @@ h2 {
   text-align: center;
   text-transform: uppercase;
   position: relative;
-  margin: 1rem;
+  margin: auto;
+  width: fit-content;
 }
 .discounted .highlight {
   color: var(--blue-color);
-  font-size: 2rem;
+  font-size: 2.3rem;
   font-weight: bold;
 }
 h2::after {
   content: "";
-  width: 100px;
+  width: 100%;
   position: absolute;
   margin: 0 auto;
   height: 3px;

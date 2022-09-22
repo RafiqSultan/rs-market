@@ -22,11 +22,17 @@
 
       <div class="addCard">
         <div class="detailsCard">
-          <span class="hvr-rectangle-in" @click="addToCart"
+          <span
+            class="hvr-rectangle-in"
+            @click="addToCart"
+            :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
           <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
-          <span class="hvr-rectangle-in" @click="addToFav"
+          <span
+            class="hvr-rectangle-in"
+            @click="addToFav"
+            :class="{ isActive: isFav == true }"
             ><i class="fa-solid fa-heart"></i
           ></span>
         </div>
@@ -38,13 +44,15 @@
 <!-- Script js data -->
 <script>
 export default {
-  provide: {
-    countNum: 0,
-  },
+  // provide: {
+  //   countNum: 0,
+  // },
   props: ["phoneTitle", "phoneImg", "phonePrice", "disc"],
   data() {
     return {
       noCart: 0,
+      isFav: null,
+      isCart: null,
     };
   },
   methods: {
@@ -54,6 +62,9 @@ export default {
   },
   computed: {
     addToCart() {
+      if (this.isCart === null) {
+        this.isCart = true;
+      }
       fetch(
         "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json",
         {
@@ -72,6 +83,10 @@ export default {
     },
     // Add to Favorite menu
     addToFav() {
+      if (this.isFav === null) {
+        this.isFav = true;
+      }
+
       fetch(
         "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartFav.json",
         {
@@ -168,7 +183,7 @@ export default {
     span {
       height: 40px;
       width: 40px;
-      border-radius: 50%;
+      border-radius: 50% !important;
       background-color: var(--blue-color);
       display: flex;
       color: var(--red-color);
@@ -181,9 +196,35 @@ export default {
       }
     }
     span:hover {
-      color: var(--back-color);
+      color: var(--red-color);
     }
   }
+}
+.isActive {
+  height: 40px;
+  width: 40px;
+  border-radius: 50% !important;
+  background-color: var(--blue-color) !important;
+  display: flex;
+  color: var(--blue-dark-color) !important;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.isActive:hover {
+  color: var(--red-color) !important;
+}
+.isNotActive {
+  height: 40px;
+  width: 40px;
+  border-radius: 50% !important;
+  background-color: var(--blue-color) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: var(--red-color) !important;
 }
 
 @media (max-width: 468px) {
