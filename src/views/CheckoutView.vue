@@ -5,7 +5,7 @@
       <div class="cart">
         <div class="head">
           <div class="col-lg-2 col-md-2">
-            <h3>Shopping Cart</h3>
+            <h3 class="title">Shopping Cart</h3>
           </div>
           <div class="col-lg-2 col-md-2">
             <div class="model">Model</div>
@@ -138,7 +138,9 @@
               </div>
               <div class="row d-flex justify-content-between px-4" id="tax">
                 <p class="mb-1 text-left">Total Price :</p>
-                <h6 class="mb-4 text-right">{{ totalOfProduct }}</h6>
+                <h6 class="mb-4 text-right">
+                  <span class="totalAll">$</span>{{ totalOfProduct }}
+                </h6>
               </div>
               <router-link
                 tag="button"
@@ -283,8 +285,15 @@ export default {
   align-items: center;
   justify-content: center !important;
   padding: 0.8rem;
-  border-bottom: 1px solid #f00;
+  border-bottom: 1px solid var(--red-color);
   text-align: center;
+}
+.head .title {
+  color: var(--red-color);
+}
+.total span,
+.price span {
+  color: #000 !important;
 }
 /* Style For Cart Order */
 .cartItem {
@@ -404,6 +413,9 @@ button:focus {
 
 #check-amt {
   float: right;
+}
+.totalAll {
+  color: var(--red-color);
 }
 @media screen and (max-width: 991px) {
   .head h3 {

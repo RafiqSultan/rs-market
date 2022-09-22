@@ -74,7 +74,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.myorder.length);
+    setTimeout(() => this.myorder.length > 0, 3000);
 
     fetch(
       "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json"
@@ -115,6 +115,8 @@ export default {
   flex-direction: column;
   height: 500px;
   margin-top: -69vh !important;
+  transition-delay: 10s !important;
+  transition-duration: 5s;
 }
 .noorder img {
   width: 200px;
