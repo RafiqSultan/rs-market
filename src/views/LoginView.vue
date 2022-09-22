@@ -26,17 +26,19 @@
         <div class="col-lg-6">
           <div class="card2 card border-0 px-4 py-5">
             <div class="row mb-4 px-3 col-lg-12 col-md-12 mx-auto">
-              <h2 class="mb-0 mr-4 mt-2">
+              <h2 class="mt-2">
                 Login <span style="font-size: 20px">with</span>
               </h2>
-              <div class="facebook text-center mr-3">
-                <i class="fab fa-facebook"></i>
-              </div>
-              <div class="twitter text-center mr-3">
-                <div class="fab fa-twitter"></div>
-              </div>
-              <div class="google text-center mr-3">
-                <div class="fab fa-google"></div>
+              <div class="row icons">
+                <div class="facebook text-center mr-3">
+                  <i class="fab fa-facebook"></i>
+                </div>
+                <div class="twitter text-center mr-3">
+                  <div class="fab fa-twitter"></div>
+                </div>
+                <div class="google text-center mr-3">
+                  <div class="fab fa-google"></div>
+                </div>
               </div>
             </div>
             <div class="row px-3">
@@ -45,7 +47,7 @@
               <div class="line"></div>
             </div>
             <form>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Username or Email</h6> </label>
                 <input
                   type="text"
@@ -53,7 +55,7 @@
                   placeholder="Enter username or email"
                 />
               </div>
-              <div class="row">
+              <div class="row mb-2">
                 <label><h6>Password</h6> </label>
                 <input
                   type="password"
@@ -68,7 +70,7 @@
                   <div
                     class="d-flex align-items-center justify-content-between"
                   >
-                    <div class="d-flex align-items-center">
+                    <div class="remember d-flex align-items-center">
                       <input
                         type="checkbox"
                         class="checkbox"
@@ -92,7 +94,7 @@
               </div>
             </form>
 
-            <div class="row mb-4 px-3">
+            <div class="row another-register mb-4 px-3">
               <small class="font-weight-bold"
                 >Don't have an account?
                 <router-link tag="a" to="/signup" class="text-danger"
@@ -121,6 +123,10 @@
 
 .card2 {
   margin: 0px 40px;
+}
+.card2 h2 {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .logo {
@@ -274,7 +280,18 @@ a {
   .logo {
     margin-left: 0px;
   }
-
+  .card2 h2 {
+    text-align: center;
+  }
+  .card2 .icons {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .another-register {
+    text-align: center;
+  }
   .image {
     width: 300px;
     height: 220px;
@@ -298,6 +315,13 @@ a {
     .or {
       width: 30%;
       font-weight: bold;
+    }
+    .another-register {
+      text-align: center;
+    }
+    .forget,
+    .remember {
+      font-size: 13px;
     }
   }
 }
