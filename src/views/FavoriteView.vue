@@ -147,9 +147,10 @@ export default {
     border-radius: 50%;
     top: 0;
     right: -2px;
-    background-color: #f0bb0d;
+    background-color: var(--red-color);
     z-index: 100 !important;
     font-size: 19px;
+    color: #fff;
     cursor: pointer;
   }
 
@@ -214,6 +215,14 @@ export default {
         font-size: 23px;
       }
     }
+  }
+}
+@media (max-width: 516px) {
+  .favCart {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 }
 </style> 

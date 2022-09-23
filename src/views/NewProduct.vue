@@ -1,7 +1,7 @@
 <template>
-  <section class="product-line">
-    <div class="discounted">
-      <div class="container">
+  <div class="container">
+    <section class="product-line">
+      <div class="discounted">
         <!-- Tital -->
         <div class="row">
           <div class="col-md-12">
@@ -60,8 +60,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>

@@ -258,6 +258,9 @@ video {
   border-radius: 2rem;
   max-height: 100%;
 }
+.carousel-indicators {
+  display: none;
+}
 @media screen and (max-width: 900px) {
   .landing {
     flex-direction: column-reverse;
@@ -277,5 +280,16 @@ video {
   .carousel-control-next {
     display: none;
   }
+  .carousel-control-prev {
+    display: none;
+  }
+  /* .carousel-indicators {
+    background: #000;
+    z-index: 1000 !important;
+  }
+  .carousel-indicators button {
+    background: #fff;
+    z-index: 1000 !important;
+  } */
 }
 </style>
