@@ -110,4 +110,31 @@ export default {
 .btn_checkout a {
   color: #fff;
 }
+@media (max-width: 991px) {
+  .cart {
+    width: 250px;
+    max-height: 290px;
+    position: absolute;
+    top: 6.5rem !important;
+    right: calc(5% + 1%);
+  }
+}
+@media (max-width: 576px) {
+  .cart {
+    width: 200px;
+    max-height: 290px;
+    position: absolute;
+    top: 6.5rem !important;
+    right: calc(5% + 1%);
+  }
+}
+@media (max-width: 460px) {
+  .cart {
+    width: 200px;
+    max-height: 290px;
+    position: absolute;
+    top: 6.2rem !important;
+    right: calc(5% + 1%);
+  }
+}
 </style>

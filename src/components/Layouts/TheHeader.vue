@@ -345,7 +345,7 @@ export default {
   width: 23px;
   height: 23px;
   top: -8px;
-  left: -5px;
+  left: -3px;
   background-color: var(--red-color) !important;
   z-index: 1000;
   border-radius: 50%;
