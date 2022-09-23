@@ -1,7 +1,7 @@
 
 <template>
   <TheHeader />
-  <!-- <LandingScreen /> -->
+  <LandingScreen />
   <NewProduct />
   <TheFooter />
 </template>

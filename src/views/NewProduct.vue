@@ -33,32 +33,21 @@
           </div>
         </div>
         <!-- Content -->
-        <!-- <div
-          class="row"
-          data-aos="fade-left"
-          data-aos-anchor="#example-anchor"
-          data-aos-offset="500"
-          data-aos-duration="500"
-        >
+        <div class="row ads">
           <div class="col-lg-12 show1" data-aos="fade-left">
             <img src="../assets/show/show1.webp" alt="" />
           </div>
         </div>
-        <div
-          class="row"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-        >
-          <div class="col-lg-12 show2">
+        <div class="row ads">
+          <div class="col-lg-12 show2" data-aos="fade-right">
             <img src="../assets/show/bannershow.webp" alt="" />
           </div>
         </div>
-        <div class="row">
+        <div class="row ads">
           <div class="col-lg-12 show3" data-aos="fade-left">
             <img src="../assets/show/show2.webp" alt="" />
           </div>
-        </div>-->
+        </div>
       </div>
     </section>
   </div>
@@ -82,6 +71,9 @@ export default {
 </script>
 
 <style scoped>
+.ads {
+  overflow-x: hidden !important;
+}
 .product-line {
   z-index: 0;
 }
