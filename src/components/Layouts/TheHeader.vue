@@ -407,7 +407,7 @@ export default {
 .sec-navbar .profile_form {
   position: absolute;
   z-index: 1000;
-  right: calc(30px);
+  right: 5%;
   transform: scaleY(1);
   width: 150px;
   height: 80px;

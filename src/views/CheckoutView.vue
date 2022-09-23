@@ -28,18 +28,18 @@
     <!-- Cart Order Buy -->
 
     <div class="row cartItem" v-for="item in resultCartItem" :key="item.id">
-      <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-3">
         <div class="img">
           <img :src="item.phoneImg" alt="" />
         </div>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-3 col-3">
+      <div class="col-lg-2 col-md-2 col-sm-3 col-6">
         <h5 class="model">{{ item.phoneModel }}</h5>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-3">
         <h5 class="price"><span>$</span>{{ item.phonePrice }}</h5>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-5 col-5">
+      <div class="col-lg-2 col-md-2 col-sm-5 col-4">
         <div class="quantity">
           <div @click="minusQuantity(item)">
             <i class="fas fa-circle-minus"></i>
@@ -50,11 +50,11 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-6 col-6">
+      <div class="col-lg-2 col-md-2 col-sm-6 col-4">
         <h5 class="total"><span>$</span>{{ item.totalPrice }}</h5>
       </div>
       <div
-        class="trash col-lg-2 col-md-2 col-sm-6 col-6"
+        class="trash col-lg-2 col-md-2 col-sm-6 col-4"
         title="delete"
         @click="removeCart(item)"
       >
@@ -128,15 +128,15 @@
               </div>
             </div>
             <div class="col-lg-4 mt-2">
-              <div class="row d-flex justify-content-between px-4">
+              <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">Subtotal</p>
                 <h6 class="mb-1 text-right">{{ totalOfProduct }}</h6>
               </div>
-              <div class="row d-flex justify-content-between px-4">
+              <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">discount Code</p>
                 <h6 class="mb-1 text-right">$0.00</h6>
               </div>
-              <div class="row d-flex justify-content-between px-4" id="tax">
+              <div class="row d-flex justify-content-between px-2" id="tax">
                 <p class="mb-1 text-left">Total Price :</p>
                 <h6 class="mb-4 text-right">
                   <span class="totalAll">$</span>{{ totalOfProduct }}
@@ -454,6 +454,13 @@ button:focus {
   .head {
     justify-content: flex-start !important;
   }
+  .cartItem .total {
+    text-align: left;
+    margin: 0.4rem 0;
+  }
+  .trash {
+    text-align: right;
+  }
 }
 @media screen and (max-width: 576px) {
   .trash {
@@ -466,5 +473,8 @@ button:focus {
     text-align: left;
     margin: 0.4rem 0;
   }
+  /* .cartItem .model {
+    font-size: 15px !important;
+  } */
 }
 </style>
