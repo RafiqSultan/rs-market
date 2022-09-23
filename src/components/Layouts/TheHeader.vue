@@ -359,7 +359,7 @@ export default {
 /*  search -form */
 .sec-navbar .search {
   position: absolute;
-  top: 10vh !important;
+  top: 103% !important;
   z-index: 1000;
   margin-left: 70px;
   opacity: 1;
@@ -489,14 +489,15 @@ export default {
   }
   .sec-navbar .search {
     position: absolute;
-    top: 15vh !important;
-    width: 500px;
+    top: 102% !important;
+    width: 600px;
+    margin-left: 0;
   }
 }
 @media (max-width: 768px) {
   .sec-navbar .search {
     position: absolute;
-    top: 15vh !important;
+    top: 101% !important;
     width: 500px;
     margin-left: 0;
   }
@@ -504,15 +505,15 @@ export default {
 @media (max-width: 576px) {
   .sec-navbar .search {
     position: absolute;
-    top: 15vh !important;
-    width: 400px;
-    margin-left: 50px;
+    top: 101% !important;
+    width: 450px;
+    margin-left: 20px;
   }
 }
 @media (max-width: 468px) {
   .sec-navbar .search {
     position: absolute;
-    top: 15vh !important;
+    top: 100% !important;
     width: 350px;
     margin-left: 0;
   }
