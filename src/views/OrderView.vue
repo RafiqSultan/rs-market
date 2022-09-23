@@ -7,7 +7,7 @@
     <div class="row d-flex">
       <div class="cart">
         <div class="head">
-          <div class="col-lg-2 col-md-2">
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12">
             <h3 class="title">My Order</h3>
           </div>
           <div class="col-lg-2 col-md-2">
@@ -190,7 +190,25 @@ export default {
   }
 
   .head {
-    justify-content: flex-start !important;
+    text-align: center;
+  }
+  .head .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 991px) {
+  .head {
+    justify-content: flex-end !important;
+    text-align: center;
+  }
+  .head .title {
+    font-size: 24px;
+    text-align: left;
+  }
+  .head .model {
+    text-align: left;
   }
 }
 </style>
