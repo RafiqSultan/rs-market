@@ -3,26 +3,26 @@
     <section class="product-line">
       <div class="discounted">
         <!-- Tital -->
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-md-12">
             <h2 class="title">
               <span class="highlight"><b>New</b></span> Products
             </h2>
           </div>
-        </div> -->
+        </div>
         <!-- Carsouel Card -->
-        <!-- <MyCarousel ContentOfCarousel="newProduct" /> -->
+        <MyCarousel ContentOfCarousel="newProduct" />
 
         <!-- Tital Discount -->
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-md-12">
             <h2 class="title">
               <span class="highlight"><b>Discount</b></span> Products
             </h2>
           </div>
-        </div> -->
+        </div>
         <!-- Carsouel Card -->
-        <!-- <MyCarousel ContentOfCarousel="discount" /> -->
+        <MyCarousel ContentOfCarousel="discount" />
         <!-- Tital -->
         <div class="row">
           <div class="col-md-12">
@@ -33,7 +33,7 @@
           </div>
         </div>
         <!-- Content -->
-        <div
+        <!-- <div
           class="row"
           data-aos="fade-left"
           data-aos-anchor="#example-anchor"
@@ -58,7 +58,7 @@
           <div class="col-lg-12 show3" data-aos="fade-left">
             <img src="../assets/show/show2.webp" alt="" />
           </div>
-        </div>
+        </div>-->
       </div>
     </section>
   </div>
