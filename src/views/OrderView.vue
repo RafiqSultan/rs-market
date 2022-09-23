@@ -28,24 +28,24 @@
     <!-- Cart Order Buy -->
 
     <div class="row cartItem" v-for="(item, index) in myorder" :key="item.id">
-      <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+      <div class="col-lg-2 col-md-2 col-sm-3 col-3">
         <div class="img">
           <span>{{ index + 1 }}-</span>
           <img :src="item.phoneImg" alt="" />
         </div>
       </div>
-      <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+      <div class="col-lg-2 col-md-4 col-sm-4 col-5">
         <h5 class="model">{{ item.phoneModel }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-2">
         <h5 class="price"><span>$</span>{{ item.phonePrice }}</h5>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+      <div class="col-lg-2 col-md-2 col-sm-1 col-2">
         <h5 class="price">{{ item.phoneQuantity }}</h5>
       </div>
 
       <div class="col-lg-2 col-md-2 col-sm-2 col-12">
-        <h5 class="price">OK</h5>
+        <h5 class="ok">OK</h5>
       </div>
     </div>
   </div>
@@ -168,6 +168,9 @@ export default {
   font-size: 20px;
   overflow: hidden;
 }
+.ok {
+  color: var(--blue-dark-color);
+}
 .img {
   height: 50px;
   overflow: hidden;
@@ -209,6 +212,11 @@ export default {
   }
   .head .model {
     text-align: left;
+  }
+}
+@media (max-width: 576px) {
+  .cartItem .model {
+    font-size: 20px;
   }
 }
 </style>
