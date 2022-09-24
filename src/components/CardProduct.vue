@@ -23,7 +23,10 @@
         <div class="detailsCard">
           <span
             class="hvr-rectangle-in"
-            @click="addToCart"
+            @click="
+              addItemToCart(phoneTitle);
+              addToCart();
+            "
             :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
@@ -42,9 +45,13 @@
 
 <!-- Script js data -->
 <script>
+import { mapActions } from "vuex";
 export default {
-  // provide: {
-  //   countNum: 0,
+  // setup() {
+  //   provide("addNumberTo", addNum);
+  //   return {
+  //     addNum,
+  //   };
   // },
   props: ["phoneTitle", "phoneImg", "phonePrice", "disc"],
   data() {
@@ -53,12 +60,12 @@ export default {
       isFav: null,
       isCart: null,
       disco: this.disc,
+      addNum: [],
     };
   },
-  // methods: {
+  methods: {
+    ...mapActions(["addItemToCart"]),
 
-  // },
-  computed: {
     addToCart() {
       if (this.isCart === null) {
         this.isCart = true;
@@ -78,7 +85,10 @@ export default {
         }
       );
       countNum++;
+      // this.addNum.push("1");
     },
+    // computed: {},
+
     // Add to Favorite menu
     addToFav() {
       if (this.isFav === null) {
@@ -103,8 +113,8 @@ export default {
   },
   mounted() {
     // dicountPrice(price, discount) {
-    console.log("dddddddddddddisisisisis");
-    console.log(this.disco);
+    // console.log("dddddddddddddisisisisis");
+    // console.log(this.disco);
     // let disco = 0;
     // disco = this.price - this.price * (this.discount / 100);
     // console.log(disco);

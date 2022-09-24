@@ -5,6 +5,7 @@ import { createStore } from 'vuex'
  const store = createStore({
   state:{
     cartItemNumber:[],
+    // favItem:[],
     newPhones:[
         {
             "id": 1,
@@ -245,14 +246,27 @@ import { createStore } from 'vuex'
 // Getter---------
 getters:{
     // return number of cartItem
-    lenCart(){
-       return state.cartItemNumber.length;
-    },
+    // lenCart(){
+    //    return state.cartItemNumber.length;
+    // },
+    cartItemNumber: (state) => state.cartItemNumber,
+},
+// Actions
+actions:{
+    addItemToCart({commit},phoneTitle) {
+        commit("addToCart",phoneTitle);
+      },
+     
 },
 // Mutation
 mutations:{
-    inCart(state, n) { 
-        return state.cartItemNumber.push(n);
+   
+    addToCart(state, phoneTitle){
+        
+        return state.cartItemNumber.push(phoneTitle);
+    },
+    removeFromCart(state){
+        return this.state.cartItemNumber.length - 1;
       },
  },
 })

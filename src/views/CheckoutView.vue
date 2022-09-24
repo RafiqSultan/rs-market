@@ -56,7 +56,10 @@
       <div
         class="trash col-lg-2 col-md-2 col-sm-6 col-4"
         title="delete"
-        @click="removeCart(item)"
+        @click="
+          removeCart(item);
+          removeFromCart();
+        "
       >
         <i class="fas fa-trash"></i>
       </div>
@@ -161,6 +164,7 @@
 <script>
 import TheFooter from "../components/Layouts/TheFooter.vue";
 import TheHeader from "../components/Layouts/TheHeader.vue";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -211,6 +215,7 @@ export default {
       this.resultCartItem[index].push(order);
     },
     // Remove item from Cart
+    ...mapActions(["removeFromCart"]),
     removeCart(order) {
       this.resultCartItem = this.resultCartItem.filter(
         (obj) => obj.id !== order.id

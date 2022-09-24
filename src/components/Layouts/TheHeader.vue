@@ -87,6 +87,13 @@
                   id="search-btn"
                   title="Favorite"
                 >
+                  <div
+                    class="d-flex align-items-lg-center justify-content-center"
+                    :class="{ favorite: totalQty > 0 }"
+                  >
+                    <!-- <span>{{ num }}</span> -->
+                    <span v-if="totalQty > 0">{{ totalQty }}</span>
+                  </div>
                   <i
                     class="far fa-heart"
                     data-bs-toggle="tooltip"
@@ -106,14 +113,11 @@
                     title="Cart"
                   ></i>
                   <div
-                    class="
-                      cart
-                      d-flex
-                      align-items-lg-center
-                      justify-content-center
-                    "
+                    class="d-flex align-items-lg-center justify-content-center"
+                    :class="{ cart: totalQty > 0 }"
                   >
-                    <span>{{ num }}</span>
+                    <!-- <span>{{ num }}</span> -->
+                    <span v-if="totalQty > 0">{{ totalQty }}</span>
                   </div>
                 </div>
                 <!-- Profile Icon -->
@@ -180,8 +184,11 @@
 <!-- Script  -->
 <script>
 import CartItem from "../CartItem.vue";
+import { mapGetters } from "vuex";
 export default {
-  inject: ["countNum"],
+  // setup() {
+  //   const item = inject("addNumberTo");
+  // },
   components: {
     CartItem,
   },
@@ -197,9 +204,13 @@ export default {
     };
   },
   computed: {
-    num() {
-      return this.itemCart.length;
+    ...mapGetters(["cartItemNumber"]),
+    totalQty() {
+      return this.cartItemNumber.length;
     },
+    // num() {
+    //   return this.itemCart.length;
+    // },
   },
   methods: {
     showLayout(option) {
@@ -251,8 +262,6 @@ export default {
     },
   },
   mounted() {
-    console.log("heeeeeeeeeeder");
-    console.log(this.countNum);
     console.log(this.$store.state.cartItemNumber);
     fetch(
       "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
@@ -273,7 +282,7 @@ export default {
           });
         }
         this.itemCart = results;
-        // this.cartNumber = results.length;
+        this.cartNumber = results.length;
       });
   },
 };
@@ -339,14 +348,15 @@ export default {
 .sec-navbar .user-setting .icons .fa-heart:hover {
   color: var(--red-color) !important;
 }
-.sec-navbar .user-setting .icons .cart {
+.cart,
+.favorite {
   content: "";
   position: absolute;
   width: 23px;
   height: 23px;
   top: -8px;
   left: -3px;
-  background-color: var(--red-color) !important;
+  background-color: #00f !important;
   z-index: 1000;
   border-radius: 50%;
   font-size: 12px;

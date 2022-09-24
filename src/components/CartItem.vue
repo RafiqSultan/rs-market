@@ -83,16 +83,7 @@ export default {
   color: var(--red-color);
   font-size: 16px;
 }
-.btn_checkout {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  background-color: var(--red-color);
-  text-align: center;
-  padding: 0.3rem;
-  font-weight: 500;
-}
+
 .btn_checkout {
   position: absolute;
   width: 100%;
