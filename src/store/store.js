@@ -4,7 +4,7 @@ import { db, fs } from '../firebase'
 export default createStore({
   state:{
     cart: [],
-    cartItemNumber:[],
+    favorite:[],
     // favItem:[],
     newPhones:[
         {
@@ -379,11 +379,8 @@ export default createStore({
 //   End of state
 // Getter---------
  getters:{
-//     // return number of cartItem
-//     // lenCart(){
-//     //    return state.cartItemNumber.length;
-//     // },
-    cartItemNumber: (state) => state.cartItemNumber,
+
+    // Cart
     getProducts: state => {
         return state.newPhones
       },
@@ -393,6 +390,14 @@ export default createStore({
       getNumberOfCart: state =>{
         return state.cart.length
       },
+      // Favorite
+      getCartFavorite: state => {
+        return state.favorite
+      },
+      getNumberOfCartFavorite: state =>{
+        return state.favorite.length
+      },
+      // Total
       getTotal: state => {
         let total = 0
         state.cart.map((p) => {
@@ -407,7 +412,17 @@ actions:{
     async addProduct({ commit }, product) {
       await db.collection('cart').doc(`${product.id}`).set(product, { merge: true })
       },
-      // On mount load data from firebase into cart
+      
+      //Add product To Favorite in Firebase Firestore
+    async addToFavorite({ commit }, product) {
+      await db.collection('Favorite').doc(`${product.id}`).set(product, { merge: true })
+      },
+
+      
+      addAllFavorite({commit} , productToFav){
+        commit('addAllFavorite',productToFav);
+        },
+      //ADD All prodact to cart when load 
       addAllProducts({commit} , productToCart){
       commit('addAllProducts',productToCart);
       },
@@ -421,13 +436,23 @@ actions:{
        },
        //Remove Cart Item
        removeCart({commit},id){
-        commit('removeItemCart', id)
+        // commit('removeItemCart', id)
         db.collection('cart').doc(`${id}`).delete()
+       },
+
+        //Remove Favorite Item
+       removeFavorite({commit},id){
+        // commit('removeItemFavorite', id)
+        db.collection('Favorite').doc(`${id}`).delete()
 
        },
       // Empty Cart
       cleanStore({commit}){
         commit('cleanStore');
+      },
+      // Empty Cart
+      cleanFavorite({commit}){
+        commit('cleanFavorite');
       },
      
      
@@ -442,24 +467,19 @@ mutations:{
     //Load  product To Cart in Firebase Firestore
     addAllProducts(state,productToCart){
       state.cart.push(productToCart);
-      // console.log('ADD All');
-      // let z= state.cart;
-      // console.log(z.model);
-    },
-    // Remove Cart 
-    //    removeItemCart(state, id) {
 
-    //   state.products.map((p) => {
-    //     if (p.id == id) {
-    //       p.cart = false
-    //     }
-    //     console.log('carttttttadd')
-    //     console.log(state.cart);
-    //   })
-    // },
+    },
     // Clean Store
     cleanStore(state){
       state.cart=[];
+    },
+     //Load  product To Fav in Firebase Firestore
+     addAllFavorite(state,productToFav){
+      state.favorite.push(productToFav);
+    },
+    // Clean Store
+    cleanFavorite(state){
+      state.favorite=[];
     },
 
      

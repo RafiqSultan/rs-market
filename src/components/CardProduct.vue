@@ -46,7 +46,18 @@
           <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
           <span
             class="hvr-rectangle-in"
-            @click="addToFav"
+            @click="
+              addToFav(
+                phoneId,
+                type,
+                phoneModel,
+                phoneImg,
+                phonePrice,
+                phoneDiscount,
+                quantity,
+                cart
+              )
+            "
             :class="{ isActive: isFav == true }"
             ><i class="fa-solid fa-heart"></i
           ></span>
@@ -111,6 +122,30 @@ export default {
       product.timestamp = new Date().getTime();
       store.dispatch("addProduct", product);
     }
+    // Add to Favorite
+    function addToFav(
+      phoneId,
+      type,
+      phoneModel,
+      phoneImg,
+      phonePrice,
+      phoneDiscount,
+      quantity
+    ) {
+      let product = {
+        id: phoneId,
+        type: type,
+        model: phoneModel,
+        img: phoneImg,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        discount: phoneDiscount,
+        quantity: quantity,
+        cart: true,
+      };
+      console.log("click");
+      product.timestamp = new Date().getTime();
+      store.dispatch("addToFavorite", product);
+    }
     // function removeProduct(id) {
     //   store.dispatch("removeProduct", id);
     // }
@@ -123,12 +158,7 @@ export default {
 
     return {
       addProduct,
-      // increaseQ,
-      // removeProduct,
-      // decreaseQ,
-      // cart: computed(() => store.getters.getCart),
-      // products: computed(() => store.getters.getProducts),
-      // total: computed(() => store.getters.getTotal),
+      addToFav,
     };
   },
   // methods: {

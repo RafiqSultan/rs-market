@@ -89,10 +89,10 @@
                 >
                   <div
                     class="d-flex align-items-lg-center justify-content-center"
-                    :class="{ favorite: totalQty > 0 }"
+                    :class="{ favorite: totlaFav > 0 }"
                   >
                     <!-- <span>{{ num }}</span> -->
-                    <span v-if="totalQty > 0">{{ totalQty }}</span>
+                    <span v-if="totlaFav > 0">{{ totlaFav }}</span>
                   </div>
                   <i
                     class="far fa-heart"
@@ -207,6 +207,10 @@ export default {
     totalQty() {
       const store = useStore();
       return store.getters.getNumberOfCart;
+    },
+    totlaFav() {
+      const store = useStore();
+      return store.getters.getNumberOfCartFavorite;
     },
     // num() {
     //   return this.itemCart.length;

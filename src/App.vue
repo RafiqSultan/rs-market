@@ -14,6 +14,14 @@ export default {
   setup() {
     const store = useStore();
     onMounted(() => {
+      db.collection("Favorite")
+        .orderBy("timestamp")
+        .onSnapshot((querySnapshot) => {
+          store.dispatch("cleanFavorite");
+          querySnapshot.forEach((doc) => {
+            store.dispatch("addAllFavorite", doc.data());
+          });
+        });
       db.collection("cart")
         .orderBy("timestamp")
         .onSnapshot((querySnapshot) => {

@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .cart {
   width: 250px;
-  max-height: 290px;
+  /* height: 390px; */
   position: absolute;
   top: 4rem !important;
   right: 6%;
@@ -63,8 +63,9 @@ export default {
   box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
   margin: auto;
   border-bottom: 1px solid var(--red-color);
-  margin-bottom: 5px !important;
+  margin-bottom: 45px !important;
   padding: 0.2rem;
+  /* background: #f00; */
 }
 .cartItem .img {
   width: 30%;
