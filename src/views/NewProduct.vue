@@ -54,19 +54,25 @@
 </template>
 
 <script>
-import CardProduct from "../components/CardProduct.vue";
 import MyCarousel from "../components/MyCarousel.vue";
 
 export default {
   components: {
-    CardProduct,
     MyCarousel,
   },
-  computed: {
-    newProduct() {
-      return this.$store.state.phones;
-    },
-  },
+  // computed: {
+  //   newProduct() {
+  //     return this.$store.state.phones;
+  //   },
+  // },
+  // setup() {
+  //   const store = useStore();
+  //   return {
+  // cart: computed(() => store.getters.getCart),
+  // products: computed(() => store.getters.getProducts),
+  // total: computed(() => store.getters.getTotal),
+  //     };
+  //   },
 };
 </script>
 

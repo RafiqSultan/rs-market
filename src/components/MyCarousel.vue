@@ -9,9 +9,14 @@
       <CardProduct
         v-for="newphone in newPhones"
         :key="newphone"
-        :phoneTitle="newphone.model"
+        :phoneId="newphone.id"
+        :type="newphone.type"
+        :phoneModel="newphone.model"
         :phonePrice="newphone.price"
         :phoneImg="newphone.image"
+        :cart="newphone.cart"
+        :quantity="newphone.quantity"
+        :phoneDiscount="newphone.discount"
       />
 
       <template #addons>
@@ -29,10 +34,14 @@
       <CardProduct
         v-for="discount in productDiscount"
         :key="discount"
-        :phoneTitle="discount.model"
+        :phoneId="discount.id"
+        :type="discount.type"
+        :phoneModel="discount.model"
         :phonePrice="discount.price"
         :phoneImg="discount.image"
-        :disc="discount.disc"
+        :cart="discount.cart"
+        :quantity="discount.quantity"
+        :phoneDiscount="discount.discount"
       />
 
       <template #addons>
@@ -47,6 +56,9 @@
 import { Carousel, Navigation } from "vue3-carousel";
 import CardProduct from "../components/CardProduct.vue";
 import "vue3-carousel/dist/carousel.css";
+// import { computed, ref } from "vue";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 
 export default {
   name: "Breakpoints",
@@ -79,13 +91,42 @@ export default {
       },
     },
   }),
-  computed: {
-    newPhones() {
-      return this.$store.state.newPhones;
-    },
-    productDiscount() {
-      return this.$store.state.discount;
-    },
+  // computed: {
+  //   newPhones() {
+  //     return this.$store.state.newPhones;
+  //   },
+  //   productDiscount() {
+  //     return this.$store.state.discount;
+  //   },
+  // },
+  setup() {
+    const store = useStore();
+    // function addProduct(p) {
+    //   let product = { ...p };
+    //   console.log('click')
+    //   product.timestamp=new Date().getTime()
+    //   store.dispatch("addProduct", product);
+    // }
+    // function removeProduct(id) {
+    //   store.dispatch("removeProduct", id);
+    // }
+    // function increaseQ(id) {
+    //   store.dispatch("increase", id);
+    // }
+    // function decreaseQ(id) {
+    //   store.dispatch("decrease", id);
+    // }
+
+    return {
+      // addProduct,
+      // increaseQ,
+      // removeProduct,
+      // decreaseQ,
+      // cart: computed(() => store.getters.getCart),
+      newPhones: computed(() => store.state.newPhones),
+      productDiscount: computed(() => store.state.discount),
+      // total: computed(() => store.getters.getTotal),
+    };
   },
 };
 </script>

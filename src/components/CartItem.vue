@@ -5,12 +5,12 @@
         <div class="cartItem" v-for="(item, index) in cartItem" :key="item.id">
           <template v-if="index > -3">
             <div class="img">
-              <img :src="item.phoneImg" alt="imgcart" />
+              <img :src="item.img" alt="imgcart" />
             </div>
 
             <div class="details">
-              <sapn>{{ item.phoneModel }}</sapn>
-              <span>${{ item.phonePrice }}</span>
+              <sapn>{{ item.model }}</sapn>
+              <span>${{ item.price }}</span>
             </div>
           </template>
         </div>
@@ -23,8 +23,18 @@
   </div>
 </template>
 <script>
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  props: ["cartItem"],
+  // props: ["cartItem"],
+
+  setup() {
+    const store = useStore();
+
+    return {
+      cartItem: computed(() => store.getters.getCart),
+    };
+  },
 };
 </script>
 

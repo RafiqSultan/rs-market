@@ -185,99 +185,99 @@ export default {
   //       this.resultCartItem[index].push(order);
   //     },
   //   },
-  computed: {
-    // Sum of Toala Price
-    totalOfProduct() {
-      let sum = 0;
-      this.resultCartItem.forEach((item) => {
-        sum += item.totalPrice;
-      });
-      return sum;
-    },
-  },
-  methods: {
-    // Increse the Quantity
-    plusQuantity(order) {
-      order.phoneQuantity++;
-      order.totalPrice = order.phoneQuantity * order.phonePrice;
-      index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
-      this.resultCartItem[index].push(order);
-    },
-    // Decrese the Quantity
-    minusQuantity(order) {
-      if (order.phoneQuantity <= 1) {
-        order.phoneQuantity = 1;
-      } else {
-        order.phoneQuantity--;
-      }
-      order.totalPrice = order.phoneQuantity * order.phonePrice;
-      index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
-      this.resultCartItem[index].push(order);
-    },
-    // Remove item from Cart
-    ...mapActions(["removeFromCart"]),
-    removeCart(order) {
-      this.resultCartItem = this.resultCartItem.filter(
-        (obj) => obj.id !== order.id
-      );
-    },
-    // Save data order into firebase
-    saveOrder() {
-      this.resultCartItem.forEach((item) => {
-        fetch(
-          "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json",
-          {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify({
-              model: item.phoneModel,
-              img: item.phoneImg,
-              price: item.phonePrice,
-              quantity: item.phoneQuantity,
-              total: item.totalPrice,
-            }),
-          }
-        );
-      });
-    },
+  // computed: {
+  //   // Sum of Toala Price
+  //   totalOfProduct() {
+  //     let sum = 0;
+  //     this.resultCartItem.forEach((item) => {
+  //       sum += item.totalPrice;
+  //     });
+  //     return sum;
+  //   },
+  // },
+  // methods: {
+  //   // Increse the Quantity
+  //   plusQuantity(order) {
+  //     order.phoneQuantity++;
+  //     order.totalPrice = order.phoneQuantity * order.phonePrice;
+  //     index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
+  //     this.resultCartItem[index].push(order);
+  //   },
+  //   // Decrese the Quantity
+  //   minusQuantity(order) {
+  //     if (order.phoneQuantity <= 1) {
+  //       order.phoneQuantity = 1;
+  //     } else {
+  //       order.phoneQuantity--;
+  //     }
+  //     order.totalPrice = order.phoneQuantity * order.phonePrice;
+  //     index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
+  //     this.resultCartItem[index].push(order);
+  //   },
+  //   // Remove item from Cart
+  //   ...mapActions(["removeFromCart"]),
+  //   removeCart(order) {
+  //     this.resultCartItem = this.resultCartItem.filter(
+  //       (obj) => obj.id !== order.id
+  //     );
+  //   },
+  //   // Save data order into firebase
+  //   saveOrder() {
+  //     this.resultCartItem.forEach((item) => {
+  //       fetch(
+  //         "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json",
+  //         {
+  //           method: "POST",
+  //           headers: { "Content-type": "application/json" },
+  //           body: JSON.stringify({
+  //             model: item.phoneModel,
+  //             img: item.phoneImg,
+  //             price: item.phonePrice,
+  //             quantity: item.phoneQuantity,
+  //             total: item.totalPrice,
+  //           }),
+  //         }
+  //       );
+  //     });
+  //   },
 
-    // // Sum of Toala Price
-    // totalOfProduct() {
-    //   let sum = 0;
-    //   this.resultCartItem.forEach((item) => {
-    //     sum += item.totalPrice;
-    //   });
-    //   return sum;
-    // },
-  },
+  // // Sum of Toala Price
+  // totalOfProduct() {
+  //   let sum = 0;
+  //   this.resultCartItem.forEach((item) => {
+  //     sum += item.totalPrice;
+  //   });
+  //   return sum;
+  // },
+  // },
 
-  mounted() {
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-            phoneQuantity: data[id].quantity,
-            totalPrice: data[id].total,
-          });
-        }
-        this.resultCartItem = results;
-        // console.log(typeof this.resultCartItem);
-      });
+  // mounted() {
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //           phoneQuantity: data[id].quantity,
+  //           totalPrice: data[id].total,
+  //         });
+  //       }
+  //       this.resultCartItem = results;
+  //       // console.log(typeof this.resultCartItem);
+  //     });
 
-    //
-  },
+  //   //
+  // },
 };
 </script>
   
