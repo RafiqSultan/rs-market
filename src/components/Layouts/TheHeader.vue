@@ -184,7 +184,7 @@
 <!-- Script  -->
 <script>
 import CartItem from "../CartItem.vue";
-import { mapGetters } from "vuex";
+import { useStore } from "vuex";
 export default {
   // setup() {
   //   const item = inject("addNumberTo");
@@ -204,9 +204,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["cartItemNumber"]),
     totalQty() {
-      return this.cartItemNumber.length;
+      const store = useStore();
+      return store.getters.getNumberOfCart;
     },
     // num() {
     //   return this.itemCart.length;

@@ -30,28 +30,28 @@
     <div class="row cartItem" v-for="item in resultCartItem" :key="item.id">
       <div class="col-lg-2 col-md-2 col-sm-2 col-3">
         <div class="img">
-          <img :src="item.phoneImg" alt="" />
+          <img :src="item.img" alt="" />
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-3 col-6">
-        <h5 class="model">{{ item.phoneModel }}</h5>
+        <h5 class="model">{{ item.model }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-3">
-        <h5 class="price"><span>$</span>{{ item.phonePrice }}</h5>
+        <h5 class="price"><span>$</span>{{ item.price }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-5 col-4">
         <div class="quantity">
-          <div @click="minusQuantity(item)">
+          <div @click="minusQuantity(item.id)" :disabled="item.quantity < 1">
             <i class="fas fa-circle-minus"></i>
           </div>
-          <span>{{ item.phoneQuantity }}</span>
-          <div @click="plusQuantity(item)">
+          <span>{{ item.quantity }}</span>
+          <div @click="plusQuantity(item.id)">
             <i class="fas fa-circle-plus"></i>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-4">
-        <h5 class="total"><span>$</span>{{ item.totalPrice }}</h5>
+        <h5 class="total"><span>$</span>{{ item.price }}</h5>
       </div>
       <div
         class="trash col-lg-2 col-md-2 col-sm-6 col-4"
@@ -164,14 +164,31 @@
 <script>
 import TheFooter from "../components/Layouts/TheFooter.vue";
 import TheHeader from "../components/Layouts/TheHeader.vue";
-import { mapActions } from "vuex";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  data() {
+  // props: ["cartItem"],
+
+  setup() {
+    const store = useStore();
+    // increase
+    function plusQuantity(id) {
+      store.dispatch("increase", id);
+    }
+    // descrease
+    function minusQuantity(id) {
+      store.dispatch("decrease", id);
+    }
+
     return {
-      resultCartItem: [],
+      plusQuantity,
+      minusQuantity,
+      resultCartItem: computed(() => store.getters.getCart),
     };
   },
   components: { TheFooter, TheHeader },
+
   //   computed: {
   //     numberOfQuantity(index) {
   //       return index;
@@ -337,6 +354,7 @@ export default {
 .quantity .fa-circle-plus {
   color: #311b92;
   cursor: pointer;
+  font-size: 22px;
 }
 
 .price span {

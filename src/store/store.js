@@ -390,6 +390,9 @@ export default createStore({
       getCart: state => {
         return state.cart
       },
+      getNumberOfCart: state =>{
+        return state.cart.length
+      },
       getTotal: state => {
         let total = 0
         state.cart.map((p) => {
@@ -408,7 +411,14 @@ actions:{
       addAllProducts({commit} , productToCart){
       commit('addAllProducts',productToCart);
       },
-
+      // Icrease quantity of product 
+      increase({ commit }, id) {
+      db.collection('cart').doc(`${id}`).update("quantity", fs.firestore.FieldValue.increment(1))
+      },
+      // Decrease quantity of product 
+      decrease({ commit }, id) {
+      db.collection('cart').doc(`${id}`).update("quantity", fs.firestore.FieldValue.increment(-1))
+       },
       // Empty Cart
       cleanStore({commit}){
         commit('cleanStore');
