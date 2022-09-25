@@ -41,9 +41,12 @@
       </div>
       <div class="col-lg-2 col-md-2 col-sm-5 col-4">
         <div class="quantity">
-          <div @click="minusQuantity(item.id)" :disabled="item.quantity < 1">
+          <button
+            @click="minusQuantity(item.id)"
+            :disabled="item.quantity <= 1"
+          >
             <i class="fas fa-circle-minus"></i>
-          </div>
+          </button>
           <span>{{ item.quantity }}</span>
           <div @click="plusQuantity(item.id)">
             <i class="fas fa-circle-plus"></i>
@@ -51,15 +54,12 @@
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-4">
-        <h5 class="total"><span>$</span>{{ item.price }}</h5>
+        <h5 class="total"><span>$</span>{{ item.price * item.quantity }}</h5>
       </div>
       <div
         class="trash col-lg-2 col-md-2 col-sm-6 col-4"
         title="delete"
-        @click="
-          removeCart(item);
-          removeFromCart();
-        "
+        @click="removeItem(item.id)"
       >
         <i class="fas fa-trash"></i>
       </div>
@@ -180,10 +180,15 @@ export default {
     function minusQuantity(id) {
       store.dispatch("decrease", id);
     }
+    // remove Cart
+    function removeItem(id) {
+      store.dispatch("removeCart", id);
+    }
 
     return {
       plusQuantity,
       minusQuantity,
+      removeItem,
       resultCartItem: computed(() => store.getters.getCart),
     };
   },
@@ -345,7 +350,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
 }
 .quantity span {
   margin: 0 10px;

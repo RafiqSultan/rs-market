@@ -417,7 +417,13 @@ actions:{
       },
       // Decrease quantity of product 
       decrease({ commit }, id) {
-      db.collection('cart').doc(`${id}`).update("quantity", fs.firestore.FieldValue.increment(-1))
+        db.collection('cart').doc(`${id}`).update("quantity", fs.firestore.FieldValue.increment(-1))
+       },
+       //Remove Cart Item
+       removeCart({commit},id){
+        commit('removeItemCart', id)
+        db.collection('cart').doc(`${id}`).delete()
+
        },
       // Empty Cart
       cleanStore({commit}){
@@ -440,6 +446,17 @@ mutations:{
       // let z= state.cart;
       // console.log(z.model);
     },
+    // Remove Cart 
+    //    removeItemCart(state, id) {
+
+    //   state.products.map((p) => {
+    //     if (p.id == id) {
+    //       p.cart = false
+    //     }
+    //     console.log('carttttttadd')
+    //     console.log(state.cart);
+    //   })
+    // },
     // Clean Store
     cleanStore(state){
       state.cart=[];

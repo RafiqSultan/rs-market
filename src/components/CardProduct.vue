@@ -191,6 +191,7 @@ export default {
 
 <style lang="scss" scoped>
 // *Style Card Product
+
 .cardProduct {
   height: 330px;
   width: 250px;
