@@ -1,71 +1,117 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="details">
+  <body>
+    <div class="container">
+      <div class="layout-cart">
+        <div class="row">
           <div class="col-lg-6">
-            <div class="img">
-              <img
-                src="https://www.gizmochina.com/wp-content/uploads/2018/07/Samsung-Galaxy-Note9-SD845-458x344.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="info">
-              <div class="info-1">
-                <h4>model Name</h4>
-                <span>Type</span>
-              </div>
-              <div class="info-2">
-                <p>
-                  Lorem ipsum dolor sit amet minus asperiores accusantium ullam
-                  unde praesentium quos labore placeat officiis.
-                </p>
-              </div>
-              <div class="info-3">
-                <h5>colors</h5>
-                <div class="colors">
-                  <div class="red"></div>
-                  <div class="white"></div>
-                  <div class="blue"></div>
-                  <div class="red"></div>
+            <div class="details">
+              <span class="remove" @click="removeItem(item)"
+                ><i class="fas fa-xmark"></i
+              ></span>
+              <div class="col-lg-6">
+                <div class="img">
+                  <img
+                    src="https://www.gizmochina.com/wp-content/uploads/2018/07/Samsung-Galaxy-Note9-SD845-458x344.jpg"
+                    alt=""
+                  />
                 </div>
               </div>
-              <div class="info-4">
-                <h5>Rate</h5>
-                <div class="star">
-                  <i class="fa-solid fa-star" v-for="star in 4"></i>
-                  <i class="fa-solid fa-star-half-stroke"></i>
+              <div class="col-lg-6">
+                <div class="info">
+                  <div class="info-1">
+                    <h4>model Name</h4>
+                    <span>Type</span>
+                  </div>
+                  <div class="info-2">
+                    <p>
+                      Lorem ipsum dolor sit amet minus asperiores accusantium
+                      ullam unde praesentium quos labore placeat officiis.
+                    </p>
+                  </div>
+                  <div class="info-3">
+                    <h5>colors</h5>
+                    <div class="colors">
+                      <div class="red"></div>
+                      <div class="white"></div>
+                      <div class="blue"></div>
+                      <div class="red"></div>
+                    </div>
+                  </div>
+                  <div class="info-4">
+                    <h5>Rate</h5>
+                    <div class="star">
+                      <i class="fa-solid fa-star" v-for="star in 4"></i>
+                      <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                  </div>
+                  <div class="info-5">
+                    <button>
+                      <i class="fas fa-shopping-cart"></i>
+                      ADD TO CART
+                    </button>
+                    <p class="price">
+                      <!-- <span :class="{ discount: phoneDiscount > 0 }" id=""
+                    >${{ phonePrice }}</span
+                  >
+                  <span v-if="phoneDiscount > 0">
+                    $
+                    {{
+                      Math.floor(
+                        phonePrice - phonePrice * (phoneDiscount / 100)
+                      )
+                    }}</span> -->
+                      $3000
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="info-5">
-                <button>
-                  <i class="fas fa-shopping-cart"></i>
-                  ADD TO CART
-                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </body>
 </template>
 
 <style scoped>
+/* body {
+  position: absolute;
+  background: rgba(1, 1, 1, 0.5) !important;
+  width: 100%;
+  height: 100vh !important;
+  top: 10%;
+  z-index: 100000 !important;
+} */
 .details {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 300px;
-  top: auto;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
   overflow: hidden !important;
+  position: relative;
+  top: 50% !important;
+  box-shadow: 0 3px 3px var(--blue-dark-color);
+}
+.details .remove {
+  position: absolute;
+  content: "";
+  width: 25px;
+  height: 25px;
+  right: 0;
+  top: 0;
+  background-color: rgb(218, 20, 20);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #f1f1f1;
+  cursor: pointer;
 }
 
 .img {
-  background-color: #f0bb0d;
+  background-color: #fff;
+  /* border: 1px solid var(--blue-dark-color); */
   width: 100%;
   height: 100%;
   display: flex;
@@ -84,6 +130,7 @@ img {
   padding: 5px 10px;
   height: 100%;
   background-color: #fff;
+  border-left: 2px solid var(--blue-color);
 }
 .info .info-1,
 .info-2,
@@ -146,10 +193,15 @@ img {
   color: #f0bb0d !important;
   font-size: 16px;
 }
+.info-5 {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
 .info-5 button {
   background: var(--red-color);
   border: none;
-  padding: 3px 10px;
+  padding: 2px 10px;
   border-radius: 5px;
   color: #fff;
 }
@@ -161,4 +213,8 @@ img {
   background-color: #00f;
   margin-left: 10px;
 }
-</style>
+.info-5 .price {
+  font-size: 18px;
+  margin-top: 4%;
+}
+</style> 

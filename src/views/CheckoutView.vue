@@ -133,7 +133,7 @@
             <div class="col-lg-4 mt-2">
               <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">Subtotal</p>
-                <h6 class="mb-1 text-right">{{ totalOfProduct }}</h6>
+                <h6 class="mb-1 text-right">{{ total }}</h6>
               </div>
               <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">discount Code</p>
@@ -142,7 +142,7 @@
               <div class="row d-flex justify-content-between px-2" id="tax">
                 <p class="mb-1 text-left">Total Price :</p>
                 <h6 class="mb-4 text-right">
-                  <span class="totalAll">$</span>{{ totalOfProduct }}
+                  <span class="totalAll">$</span>{{ total }}
                 </h6>
               </div>
               <router-link
@@ -190,6 +190,7 @@ export default {
       minusQuantity,
       removeItem,
       resultCartItem: computed(() => store.getters.getCart),
+      total: computed(() => store.getters.getTotal),
     };
   },
   components: { TheFooter, TheHeader },
@@ -353,6 +354,9 @@ export default {
 }
 .quantity span {
   margin: 0 10px;
+}
+.quantity button {
+  border: none;
 }
 .quantity .fa-circle-minus,
 .quantity .fa-circle-plus {
