@@ -44,7 +44,9 @@
             :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
-          <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
+          <span class="hvr-rectangle-in" @click="isOpen = true"
+            ><i class="fa-solid fa-eye"></i>
+          </span>
 
           <span
             class="hvr-rectangle-in"
@@ -66,6 +68,11 @@
           ></span>
         </div>
       </div>
+      <teleport to="body">
+        <div class="modal" v-if="isOpen == true">
+          <ModalView @close="isOpen = false" />
+        </div>
+      </teleport>
     </div>
   </div>
 </template>
@@ -74,6 +81,7 @@
 <script>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import ModalView from "./ModalView.vue";
 export default {
   props: [
     "phoneId",
@@ -92,6 +100,7 @@ export default {
       isCart: null,
       disco: this.disc,
       addNum: [],
+      isOpen: false,
     };
   },
   methods: {
@@ -113,7 +122,6 @@ export default {
       }
     },
   },
-
   setup() {
     const store = useStore();
     function addProduct(
@@ -177,12 +185,24 @@ export default {
       addToFav,
     };
   },
+  components: { ModalView },
 };
 </script>
 
 <style lang="scss" scoped>
 // *Style Card Product
 
+.modal {
+  position: fixed !important;
+  top: 0;
+  // background-color: rgba(1, 1, 1, 0.3);
+  width: 100% !important;
+  height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000 !important;
+}
 .cardProduct {
   height: 330px;
   width: 250px;
@@ -198,6 +218,7 @@ export default {
   text-align: center;
   overflow: hidden;
   margin: 10px 0;
+  position: relative;
 
   //   Style img
   .img {

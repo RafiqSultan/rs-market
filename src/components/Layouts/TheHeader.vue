@@ -374,7 +374,7 @@ export default {
 .sec-navbar .search {
   position: absolute;
   top: 103% !important;
-  z-index: 1000;
+  z-index: 100;
   margin-left: 70px;
   opacity: 1;
   transform: scaleY(1);
@@ -420,7 +420,7 @@ export default {
 
 .sec-navbar .profile_form {
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   right: 5%;
   transform: scaleY(1);
   width: 150px;
@@ -478,15 +478,16 @@ export default {
     height: fit-content;
   }
   .sec-navbar .collapse {
-    background-color: var(--back-color) !important;
-    z-index: 1000 !important;
+    z-index: 100 !important;
     transition: none !important;
+    border: none !important;
   }
   .sec-navbar .navbar-toggler {
-    background-color: var(--blue-color);
-    color: var(--red-color) !important;
-    font-size: 22px !important;
+    background-color: #111;
+    color: var(--blue-color) !important;
+    font-size: 20px !important;
     border: none !important;
+    outline: none;
   }
   .sec-navbar .collapse .navbar-expand-lg {
     z-index: 1000 !important;
@@ -500,6 +501,7 @@ export default {
   .sec-navbar .collapse a:hover {
     z-index: 100;
     width: fit-content;
+    border: none !important;
   }
   .sec-navbar .search {
     position: absolute;
