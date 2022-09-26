@@ -1,9 +1,6 @@
 <template>
   <TheHeader />
-  <div
-    class="container checkout px-4 py-5 mx-auto"
-    v-if="this.myorder.length > 0"
-  >
+  <div class="container checkout px-4 py-5 mx-auto" v-if="myorder.length > 0">
     <div class="row d-flex">
       <div class="cart">
         <div class="head">
@@ -31,17 +28,17 @@
       <div class="col-lg-2 col-md-2 col-sm-3 col-3">
         <div class="img">
           <span>{{ index + 1 }}-</span>
-          <img :src="item.phoneImg" alt="" />
+          <img :src="item.img" alt="" />
         </div>
       </div>
       <div class="col-lg-2 col-md-4 col-sm-4 col-5">
-        <h5 class="model">{{ item.phoneModel }}</h5>
+        <h5 class="model">{{ item.model }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-        <h5 class="price"><span>$</span>{{ item.phonePrice }}</h5>
+        <h5 class="price"><span>$</span>{{ item.price }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-1 col-2">
-        <h5 class="price">{{ item.phoneQuantity }}</h5>
+        <h5 class="price">{{ item.quantity }}</h5>
       </div>
 
       <div class="col-lg-2 col-md-2 col-sm-2 col-12">
@@ -51,7 +48,7 @@
   </div>
   <div
     class="container"
-    v-if="this.myorder.length <= 0"
+    v-if="myorder.length <= 0"
     :class="{ noItem: myorder.length == 0 }"
   >
     <div class="noorder">
@@ -66,39 +63,43 @@
 <script>
 import TheHeader from "../components/Layouts/TheHeader.vue";
 import TheFooter from "../components/Layouts/TheFooter.vue";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+
     return {
-      myorder: [],
+      myorder: computed(() => store.getters.getCart),
     };
   },
 
-  mounted() {
-    // setTimeout(() => this.myorder.length > 0, 3000);
+  // mounted() {
+  //   // setTimeout(() => this.myorder.length > 0, 3000);
 
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-            phoneQuantity: data[id].quantity,
-            totalPrice: data[id].total,
-          });
-        }
-        this.myorder = results;
-      });
-  },
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //           phoneQuantity: data[id].quantity,
+  //           totalPrice: data[id].total,
+  //         });
+  //       }
+  //       this.myorder = results;
+  //     });
+  // },
   components: { TheHeader, TheFooter },
 };
 </script>
@@ -107,6 +108,7 @@ export default {
 <style scoped>
 .noItem {
   margin-top: 58vh !important ;
+  animation: timeOut 5s linear;
 }
 .noorder {
   display: flex;
@@ -115,8 +117,16 @@ export default {
   flex-direction: column;
   height: 500px;
   margin-top: -69vh !important;
-  transition-delay: 10s !important;
-  transition-duration: 5s;
+  /* transition-delay: 10s !important;
+  transition-duration: 5s; */
+}
+@keyframes timeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .noorder img {
   width: 200px;

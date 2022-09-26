@@ -3,14 +3,14 @@
     <div class="cart">
       <div class="row">
         <div class="cartItem" v-for="(item, index) in cartItem" :key="item.id">
-          <template v-if="index > -3">
+          <template v-if="index < 3">
             <div class="img">
-              <img :src="item.phoneImg" alt="imgcart" />
+              <img :src="item.img" alt="imgcart" />
             </div>
 
             <div class="details">
-              <sapn>{{ item.phoneModel }}</sapn>
-              <span>${{ item.phonePrice }}</span>
+              <sapn>{{ item.model }}</sapn>
+              <span>${{ item.price }}</span>
             </div>
           </template>
         </div>
@@ -23,15 +23,26 @@
   </div>
 </template>
 <script>
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  props: ["cartItem"],
+  // props: ["cartItem"],
+
+  setup() {
+    const store = useStore();
+
+    return {
+      cartItem: computed(() => store.getters.getCart),
+    };
+  },
 };
 </script>
 
 <style scoped>
 .cart {
   width: 250px;
-  max-height: 290px;
+  height: auto;
+  max-height: 300px;
   position: absolute;
   top: 4rem !important;
   right: 6%;
@@ -55,6 +66,7 @@ export default {
   border-bottom: 1px solid var(--red-color);
   margin-bottom: 5px !important;
   padding: 0.2rem;
+  /* background: #f00; */
 }
 .cartItem .img {
   width: 30%;
@@ -86,7 +98,6 @@ export default {
 
 .btn_checkout {
   position: absolute;
-  width: 100%;
   bottom: 0;
   right: 0;
   background-color: var(--red-color);
@@ -94,6 +105,7 @@ export default {
   padding: 0.3rem;
   font-weight: 500;
   cursor: pointer;
+  /* margin-top: 20px !important; */
 }
 .btn_checkout:hover {
   background-color: var(--btn-color);

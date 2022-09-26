@@ -9,7 +9,8 @@ import "./components/scss/main.scss";
 // import axios from "../node_modules/axios";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import store from './components/store/store';
+import store from './store/store'
+
 // Animation with scroll
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles

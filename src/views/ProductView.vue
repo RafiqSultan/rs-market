@@ -8,7 +8,7 @@
           <img src="../assets/samsung-logo.png" alt="samsung" />
         </div>
         <div class="showAll">
-          <a href=""> Show All</a>
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
@@ -18,9 +18,14 @@
           <CardProduct
             v-for="phone in samsung"
             :key="phone.id"
-            :phoneTitle="phone.model"
+            :phoneId="phone.id"
+            :type="phone.type"
+            :phoneModel="phone.model"
             :phonePrice="phone.price"
             :phoneImg="phone.image"
+            :cart="phone.cart"
+            :quantity="phone.quantity"
+            :phoneDiscount="phone.discount"
           />
         </div>
       </div>
@@ -32,7 +37,7 @@
           <img src="../assets/apple_logo.png" alt="apple" />
         </div>
         <div class="showAll">
-          <a href=""> Show All</a>
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
@@ -42,9 +47,14 @@
           <CardProduct
             v-for="phone in apple"
             :key="phone.id"
-            :phoneTitle="phone.model"
+            :phoneId="phone.id"
+            :type="phone.type"
+            :phoneModel="phone.model"
             :phonePrice="phone.price"
             :phoneImg="phone.image"
+            :cart="phone.cart"
+            :quantity="phone.quantity"
+            :phoneDiscount="phone.discount"
           />
         </div>
       </div>
@@ -57,7 +67,7 @@
           <h5 class="handfree">HandsFree</h5>
         </div>
         <div class="showAll">
-          <a href=""> Show All</a>
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
@@ -67,9 +77,14 @@
           <CardProduct
             v-for="handfree in handsfree"
             :key="handfree.id"
-            :phoneTitle="handfree.model"
+            :phoneId="handfree.id"
+            :type="handfree.type"
+            :phoneModel="handfree.model"
             :phonePrice="handfree.price"
             :phoneImg="handfree.image"
+            :cart="handfree.cart"
+            :quantity="handfree.quantity"
+            :phoneDiscount="handfree.discount"
           />
         </div>
       </div>

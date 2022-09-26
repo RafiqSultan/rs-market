@@ -1,29 +1,43 @@
 <template>
   <TheHeader />
-  <div class="container" v-if="this.myFavorite.length > 0">
+  <div class="container" v-if="myFavorite.length > 0">
     <div class="favCart">
       <div class="cardProduct" v-for="item in myFavorite">
         <div class="img">
-          <img :src="item.phoneImg" alt="phone" />
+          <img :src="item.img" alt="phone" />
         </div>
         <div class="model-Rate">
-          <h5>{{ item.phoneModel }}</h5>
+          <h5>{{ item.model }}</h5>
           <div class="star">
             <i class="fa-solid fa-star" v-for="star in 4"></i>
             <i class="fa-solid fa-star-half-stroke"></i>
           </div>
           <p>
-            $<span id="price">{{ item.phonePrice }}</span>
+            $<span id="price">{{ item.price }}</span>
           </p>
         </div>
 
         <div class="addCard">
           <div class="detailsCard">
-            <span @click="addToCart"><i class="fa fa-cart-shopping"></i></span>
+            <span
+              @click="
+                addProduct(
+                  item.id,
+                  item.type,
+                  item.model,
+                  item.img,
+                  item.price,
+                  item.discount,
+                  item.quantity,
+                  item.cart
+                )
+              "
+              ><i class="fa fa-cart-shopping"></i
+            ></span>
             <span><i class="fa-solid fa-eye"></i></span>
           </div>
         </div>
-        <span class="remove" @click="removeItem(item)"
+        <span class="remove" @click="removeItem(item.id)"
           ><i class="fas fa-xmark"></i
         ></span>
       </div>
@@ -47,42 +61,80 @@
 <script>
 import TheHeader from "../components/Layouts/TheHeader.vue";
 import TheFooter from "../components/Layouts/TheFooter.vue";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+    function addProduct(
+      phoneId,
+      type,
+      phoneModel,
+      phoneImg,
+      phonePrice,
+      phoneDiscount,
+      quantity
+    ) {
+      let product = {
+        id: phoneId,
+        type: type,
+        model: phoneModel,
+        img: phoneImg,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        discount: phoneDiscount,
+        quantity: quantity,
+        cart: true,
+      };
+      console.log("click");
+      product.timestamp = new Date().getTime();
+      store.dispatch("addProduct", product);
+    }
+    // remove Cart
+    function removeItem(id) {
+      store.dispatch("removeFavorite", id);
+    }
+
     return {
-      myFavorite: [],
+      addProduct,
+      removeItem,
+      myFavorite: computed(() => store.getters.getCartFavorite),
     };
   },
-  methods: {
-    // Remove item from Cart
-    removeItem(fav) {
-      this.myFavorite = this.myFavorite.filter((item) => item.id !== fav.id);
-    },
-  },
-  mounted() {
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartFav.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-            phoneQuantity: data[id].quantity,
-            totalPrice: data[id].total,
-          });
-        }
-        this.myFavorite = results;
-      });
-  },
+  // data() {
+  //   return {
+  //     myFavorite: [],
+  //   };
+  // },
+  // methods: {
+  //   // Remove item from Cart
+  //   removeItem(fav) {
+  //     this.myFavorite = this.myFavorite.filter((item) => item.id !== fav.id);
+  //   },
+  // },
+  // mounted() {
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartFav.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //           phoneQuantity: data[id].quantity,
+  //           totalPrice: data[id].total,
+  //         });
+  //       }
+  //       this.myFavorite = results;
+  //     });
+  // },
   components: { TheHeader, TheFooter },
 };
 </script>
@@ -90,6 +142,15 @@ export default {
 <style lang="scss" scoped>
 .noItem {
   margin-top: 58vh !important ;
+  animation: timeOut 5s linear;
+}
+@keyframes timeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .noorder {
   display: flex;

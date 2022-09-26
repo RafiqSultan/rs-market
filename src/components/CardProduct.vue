@@ -5,16 +5,21 @@
         <img :src="phoneImg" alt="phone" />
       </div>
       <div class="model-Rate">
-        <h5>{{ phoneTitle }}</h5>
+        <h5>{{ phoneModel }}</h5>
         <div class="star">
           <i class="fa-solid fa-star" v-for="star in 4"></i>
           <i class="fa-solid fa-star-half-stroke"></i>
         </div>
 
         <p class="price">
-          <span :class="{ discount: disc > 0 }" id="">${{ phonePrice }}</span>
-          <span v-if="disc > 0">
-            $ {{ Math.floor(phonePrice - phonePrice * (disc / 100)) }}</span
+          <span :class="{ discount: phoneDiscount > 0 }" id=""
+            >${{ phonePrice }}</span
+          >
+          <span v-if="phoneDiscount > 0">
+            $
+            {{
+              Math.floor(phonePrice - phonePrice * (phoneDiscount / 100))
+            }}</span
           >
         </p>
       </div>
@@ -24,16 +29,38 @@
           <span
             class="hvr-rectangle-in"
             @click="
-              addItemToCart(phoneTitle);
-              addToCart();
+              addProduct(
+                phoneId,
+                type,
+                phoneModel,
+                phoneImg,
+                phonePrice,
+                phoneDiscount,
+                quantity,
+                cart
+              );
+              changeStyle('add');
             "
             :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
           <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
+
           <span
             class="hvr-rectangle-in"
-            @click="addToFav"
+            @click="
+              addToFav(
+                phoneId,
+                type,
+                phoneModel,
+                phoneImg,
+                phonePrice,
+                phoneDiscount,
+                quantity,
+                cart
+              );
+              changeStyle('fav');
+            "
             :class="{ isActive: isFav == true }"
             ><i class="fa-solid fa-heart"></i
           ></span>
@@ -45,15 +72,19 @@
 
 <!-- Script js data -->
 <script>
-import { mapActions } from "vuex";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  // setup() {
-  //   provide("addNumberTo", addNum);
-  //   return {
-  //     addNum,
-  //   };
-  // },
-  props: ["phoneTitle", "phoneImg", "phonePrice", "disc"],
+  props: [
+    "phoneId",
+    "type",
+    "phoneModel",
+    "phoneImg",
+    "phonePrice",
+    "cart",
+    "quantity",
+    "phoneDiscount",
+  ],
   data() {
     return {
       noCart: 0,
@@ -64,67 +95,94 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addItemToCart"]),
-
-    addToCart() {
-      if (this.isCart === null) {
-        this.isCart = true;
-      }
-      fetch(
-        "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json",
-        {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify({
-            model: this.phoneTitle,
-            img: this.phoneImg,
-            price: this.phonePrice,
-            quantity: 1,
-            total: this.phonePrice,
-          }),
+    changeStyle(option) {
+      if (option == "add") {
+        if (this.isCart == true) {
+          this.isCart = null;
+        } else {
+          this.isCart = true;
         }
-      );
-      countNum++;
-      // this.addNum.push("1");
-    },
-    // computed: {},
-
-    // Add to Favorite menu
-    addToFav() {
-      if (this.isFav === null) {
-        this.isFav = true;
       }
-
-      fetch(
-        "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartFav.json",
-        {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify({
-            model: this.phoneTitle,
-            img: this.phoneImg,
-            price: this.phonePrice,
-            quantity: 1,
-            total: this.phonePrice,
-          }),
+      // Test Fav
+      else if (option == "fav") {
+        if (this.isFav == true) {
+          this.isFav = null;
+        } else {
+          this.isFav = true;
         }
-      );
+      }
     },
   },
-  mounted() {
-    // dicountPrice(price, discount) {
-    // console.log("dddddddddddddisisisisis");
-    // console.log(this.disco);
-    // let disco = 0;
-    // disco = this.price - this.price * (this.discount / 100);
-    // console.log(disco);
-    // },
+
+  setup() {
+    const store = useStore();
+    function addProduct(
+      phoneId,
+      type,
+      phoneModel,
+      phoneImg,
+      phonePrice,
+      phoneDiscount,
+      quantity
+    ) {
+      let product = {
+        id: phoneId,
+        type: type,
+        model: phoneModel,
+        img: phoneImg,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        discount: phoneDiscount,
+        quantity: quantity,
+        cart: true,
+      };
+      console.log("click");
+      product.timestamp = new Date().getTime();
+      store.dispatch("addProduct", product);
+    }
+    // Add to Favorite
+    function addToFav(
+      phoneId,
+      type,
+      phoneModel,
+      phoneImg,
+      phonePrice,
+      phoneDiscount,
+      quantity
+    ) {
+      let product = {
+        id: phoneId,
+        type: type,
+        model: phoneModel,
+        img: phoneImg,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        discount: phoneDiscount,
+        quantity: quantity,
+        cart: true,
+      };
+      console.log("click");
+      product.timestamp = new Date().getTime();
+      store.dispatch("addToFavorite", product);
+    }
+    // function removeProduct(id) {
+    //   store.dispatch("removeProduct", id);
+    // }
+    // function increaseQ(id) {
+    //   store.dispatch("increase", id);
+    // }
+    // function decreaseQ(id) {
+    //   store.dispatch("decrease", id);
+    // }
+    return {
+      addProduct,
+      addToFav,
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 // *Style Card Product
+
 .cardProduct {
   height: 330px;
   width: 250px;
@@ -229,7 +287,7 @@ export default {
       }
     }
     span:hover {
-      color: var(--back-color);
+      color: #000;
     }
   }
 }
@@ -239,7 +297,7 @@ export default {
   border-radius: 50% !important;
   background-color: var(--blue-color) !important;
   display: flex;
-  color: var(--blue-dark-color) !important;
+  color: #000 !important;
   justify-content: center;
   align-items: center;
   font-size: 18px;

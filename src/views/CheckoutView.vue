@@ -30,36 +30,36 @@
     <div class="row cartItem" v-for="item in resultCartItem" :key="item.id">
       <div class="col-lg-2 col-md-2 col-sm-2 col-3">
         <div class="img">
-          <img :src="item.phoneImg" alt="" />
+          <img :src="item.img" alt="" />
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-3 col-6">
-        <h5 class="model">{{ item.phoneModel }}</h5>
+        <h5 class="model">{{ item.model }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-3">
-        <h5 class="price"><span>$</span>{{ item.phonePrice }}</h5>
+        <h5 class="price"><span>$</span>{{ item.price }}</h5>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-5 col-4">
         <div class="quantity">
-          <div @click="minusQuantity(item)">
+          <button
+            @click="minusQuantity(item.id)"
+            :disabled="item.quantity <= 1"
+          >
             <i class="fas fa-circle-minus"></i>
-          </div>
-          <span>{{ item.phoneQuantity }}</span>
-          <div @click="plusQuantity(item)">
+          </button>
+          <span>{{ item.quantity }}</span>
+          <div @click="plusQuantity(item.id)">
             <i class="fas fa-circle-plus"></i>
           </div>
         </div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-4">
-        <h5 class="total"><span>$</span>{{ item.totalPrice }}</h5>
+        <h5 class="total"><span>$</span>{{ item.price * item.quantity }}</h5>
       </div>
       <div
         class="trash col-lg-2 col-md-2 col-sm-6 col-4"
         title="delete"
-        @click="
-          removeCart(item);
-          removeFromCart();
-        "
+        @click="removeItem(item.id)"
       >
         <i class="fas fa-trash"></i>
       </div>
@@ -133,7 +133,7 @@
             <div class="col-lg-4 mt-2">
               <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">Subtotal</p>
-                <h6 class="mb-1 text-right">{{ totalOfProduct }}</h6>
+                <h6 class="mb-1 text-right">{{ total }}</h6>
               </div>
               <div class="row d-flex justify-content-between px-2">
                 <p class="mb-1 text-left">discount Code</p>
@@ -142,7 +142,7 @@
               <div class="row d-flex justify-content-between px-2" id="tax">
                 <p class="mb-1 text-left">Total Price :</p>
                 <h6 class="mb-4 text-right">
-                  <span class="totalAll">$</span>{{ totalOfProduct }}
+                  <span class="totalAll">$</span>{{ total }}
                 </h6>
               </div>
               <router-link
@@ -164,14 +164,37 @@
 <script>
 import TheFooter from "../components/Layouts/TheFooter.vue";
 import TheHeader from "../components/Layouts/TheHeader.vue";
-import { mapActions } from "vuex";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  data() {
+  // props: ["cartItem"],
+
+  setup() {
+    const store = useStore();
+    // increase
+    function plusQuantity(id) {
+      store.dispatch("increase", id);
+    }
+    // descrease
+    function minusQuantity(id) {
+      store.dispatch("decrease", id);
+    }
+    // remove Cart
+    function removeItem(id) {
+      store.dispatch("removeCart", id);
+    }
+
     return {
-      resultCartItem: [],
+      plusQuantity,
+      minusQuantity,
+      removeItem,
+      resultCartItem: computed(() => store.getters.getCart),
+      total: computed(() => store.getters.getTotal),
     };
   },
   components: { TheFooter, TheHeader },
+
   //   computed: {
   //     numberOfQuantity(index) {
   //       return index;
@@ -185,99 +208,99 @@ export default {
   //       this.resultCartItem[index].push(order);
   //     },
   //   },
-  computed: {
-    // Sum of Toala Price
-    totalOfProduct() {
-      let sum = 0;
-      this.resultCartItem.forEach((item) => {
-        sum += item.totalPrice;
-      });
-      return sum;
-    },
-  },
-  methods: {
-    // Increse the Quantity
-    plusQuantity(order) {
-      order.phoneQuantity++;
-      order.totalPrice = order.phoneQuantity * order.phonePrice;
-      index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
-      this.resultCartItem[index].push(order);
-    },
-    // Decrese the Quantity
-    minusQuantity(order) {
-      if (order.phoneQuantity <= 1) {
-        order.phoneQuantity = 1;
-      } else {
-        order.phoneQuantity--;
-      }
-      order.totalPrice = order.phoneQuantity * order.phonePrice;
-      index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
-      this.resultCartItem[index].push(order);
-    },
-    // Remove item from Cart
-    ...mapActions(["removeFromCart"]),
-    removeCart(order) {
-      this.resultCartItem = this.resultCartItem.filter(
-        (obj) => obj.id !== order.id
-      );
-    },
-    // Save data order into firebase
-    saveOrder() {
-      this.resultCartItem.forEach((item) => {
-        fetch(
-          "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json",
-          {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify({
-              model: item.phoneModel,
-              img: item.phoneImg,
-              price: item.phonePrice,
-              quantity: item.phoneQuantity,
-              total: item.totalPrice,
-            }),
-          }
-        );
-      });
-    },
+  // computed: {
+  //   // Sum of Toala Price
+  //   totalOfProduct() {
+  //     let sum = 0;
+  //     this.resultCartItem.forEach((item) => {
+  //       sum += item.totalPrice;
+  //     });
+  //     return sum;
+  //   },
+  // },
+  // methods: {
+  //   // Increse the Quantity
+  //   plusQuantity(order) {
+  //     order.phoneQuantity++;
+  //     order.totalPrice = order.phoneQuantity * order.phonePrice;
+  //     index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
+  //     this.resultCartItem[index].push(order);
+  //   },
+  //   // Decrese the Quantity
+  //   minusQuantity(order) {
+  //     if (order.phoneQuantity <= 1) {
+  //       order.phoneQuantity = 1;
+  //     } else {
+  //       order.phoneQuantity--;
+  //     }
+  //     order.totalPrice = order.phoneQuantity * order.phonePrice;
+  //     index = this.resultCartItem.findIndex((obj) => obj.id == order.id);
+  //     this.resultCartItem[index].push(order);
+  //   },
+  //   // Remove item from Cart
+  //   ...mapActions(["removeFromCart"]),
+  //   removeCart(order) {
+  //     this.resultCartItem = this.resultCartItem.filter(
+  //       (obj) => obj.id !== order.id
+  //     );
+  //   },
+  //   // Save data order into firebase
+  //   saveOrder() {
+  //     this.resultCartItem.forEach((item) => {
+  //       fetch(
+  //         "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartOrder.json",
+  //         {
+  //           method: "POST",
+  //           headers: { "Content-type": "application/json" },
+  //           body: JSON.stringify({
+  //             model: item.phoneModel,
+  //             img: item.phoneImg,
+  //             price: item.phonePrice,
+  //             quantity: item.phoneQuantity,
+  //             total: item.totalPrice,
+  //           }),
+  //         }
+  //       );
+  //     });
+  //   },
 
-    // // Sum of Toala Price
-    // totalOfProduct() {
-    //   let sum = 0;
-    //   this.resultCartItem.forEach((item) => {
-    //     sum += item.totalPrice;
-    //   });
-    //   return sum;
-    // },
-  },
+  // // Sum of Toala Price
+  // totalOfProduct() {
+  //   let sum = 0;
+  //   this.resultCartItem.forEach((item) => {
+  //     sum += item.totalPrice;
+  //   });
+  //   return sum;
+  // },
+  // },
 
-  mounted() {
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-            phoneQuantity: data[id].quantity,
-            totalPrice: data[id].total,
-          });
-        }
-        this.resultCartItem = results;
-        // console.log(typeof this.resultCartItem);
-      });
+  // mounted() {
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //           phoneQuantity: data[id].quantity,
+  //           totalPrice: data[id].total,
+  //         });
+  //       }
+  //       this.resultCartItem = results;
+  //       // console.log(typeof this.resultCartItem);
+  //     });
 
-    //
-  },
+  //   //
+  // },
 };
 </script>
   
@@ -328,15 +351,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
 }
 .quantity span {
   margin: 0 10px;
+}
+.quantity button {
+  border: none;
 }
 .quantity .fa-circle-minus,
 .quantity .fa-circle-plus {
   color: #311b92;
   cursor: pointer;
+  font-size: 22px;
 }
 
 .price span {
