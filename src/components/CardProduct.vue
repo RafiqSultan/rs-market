@@ -38,12 +38,14 @@
                 phoneDiscount,
                 quantity,
                 cart
-              )
+              );
+              changeStyle('add');
             "
             :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
           <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
+
           <span
             class="hvr-rectangle-in"
             @click="
@@ -56,7 +58,8 @@
                 phoneDiscount,
                 quantity,
                 cart
-              )
+              );
+              changeStyle('fav');
             "
             :class="{ isActive: isFav == true }"
             ><i class="fa-solid fa-heart"></i
@@ -72,12 +75,6 @@
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
-  // setup() {
-  //   provide("addNumberTo", addNum);
-  //   return {
-  //     addNum,
-  //   };
-  // },
   props: [
     "phoneId",
     "type",
@@ -97,6 +94,26 @@ export default {
       addNum: [],
     };
   },
+  methods: {
+    changeStyle(option) {
+      if (option == "add") {
+        if (this.isCart == true) {
+          this.isCart = null;
+        } else {
+          this.isCart = true;
+        }
+      }
+      // Test Fav
+      else if (option == "fav") {
+        if (this.isFav == true) {
+          this.isFav = null;
+        } else {
+          this.isFav = true;
+        }
+      }
+    },
+  },
+
   setup() {
     const store = useStore();
     function addProduct(
@@ -155,67 +172,11 @@ export default {
     // function decreaseQ(id) {
     //   store.dispatch("decrease", id);
     // }
-
     return {
       addProduct,
       addToFav,
     };
   },
-  // methods: {
-  // addToCart() {
-  //   if (this.isCart === null) {
-  //     this.isCart = true;
-  //   }
-  //   fetch(
-  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json",
-  //     {
-  //       method: "POST",
-  //       headers: { "Content-type": "application/json" },
-  //       body: JSON.stringify({
-  //         model: this.phoneTitle,
-  //         img: this.phoneImg,
-  //         price: this.phonePrice,
-  //         quantity: 1,
-  //         total: this.phonePrice,
-  //       }),
-  //     }
-  //   );
-  //   countNum++;
-  //   // this.addNum.push("1");
-  // },
-  // computed: {},
-
-  // Add to Favorite menu
-  //   addToFav() {
-  //     if (this.isFav === null) {
-  //       this.isFav = true;
-  //     }
-
-  //     fetch(
-  //       "https://mobile-market-bf248-default-rtdb.firebaseio.com/CartFav.json",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-type": "application/json" },
-  //         body: JSON.stringify({
-  //           model: this.phoneTitle,
-  //           img: this.phoneImg,
-  //           price: this.phonePrice,
-  //           quantity: 1,
-  //           total: this.phonePrice,
-  //         }),
-  //       }
-  //     );
-  //   },
-  // },
-  // mounted() {
-  //   // dicountPrice(price, discount) {
-  //   // console.log("dddddddddddddisisisisis");
-  //   // console.log(this.disco);
-  //   // let disco = 0;
-  //   // disco = this.price - this.price * (this.discount / 100);
-  //   // console.log(disco);
-  //   // },
-  // },
 };
 </script>
 
@@ -326,7 +287,7 @@ export default {
       }
     }
     span:hover {
-      color: var(--back-color);
+      color: #000;
     }
   }
 }
@@ -336,7 +297,7 @@ export default {
   border-radius: 50% !important;
   background-color: var(--blue-color) !important;
   display: flex;
-  color: var(--blue-dark-color) !important;
+  color: #000 !important;
   justify-content: center;
   align-items: center;
   font-size: 18px;

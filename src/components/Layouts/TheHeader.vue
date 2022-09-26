@@ -318,7 +318,7 @@ export default {
 }
 
 .sec-navbar .navbar-brand img {
-  transform: scale(1.3) !important;
+  transform: scale(1.2) !important;
 }
 .sec-navbar .user-setting {
   display: inline-flex;
@@ -360,7 +360,7 @@ export default {
   height: 23px;
   top: -8px;
   left: -3px;
-  background-color: #00f !important;
+  background-color: var(--red-color) !important;
   z-index: 1000;
   border-radius: 50%;
   font-size: 12px;
@@ -449,7 +449,7 @@ export default {
 .sec-navbar .profile_form a {
   color: #000 !important;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
   text-transform: capitalize;
   margin-left: 10px;

@@ -3,7 +3,7 @@
     <div class="cart">
       <div class="row">
         <div class="cartItem" v-for="(item, index) in cartItem" :key="item.id">
-          <template v-if="index > -3">
+          <template v-if="index < 3">
             <div class="img">
               <img :src="item.img" alt="imgcart" />
             </div>
@@ -41,7 +41,8 @@ export default {
 <style scoped>
 .cart {
   width: 250px;
-  /* height: 390px; */
+  height: auto;
+  max-height: 300px;
   position: absolute;
   top: 4rem !important;
   right: 6%;
@@ -63,7 +64,7 @@ export default {
   box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
   margin: auto;
   border-bottom: 1px solid var(--red-color);
-  margin-bottom: 45px !important;
+  margin-bottom: 5px !important;
   padding: 0.2rem;
   /* background: #f00; */
 }
@@ -97,7 +98,6 @@ export default {
 
 .btn_checkout {
   position: absolute;
-  width: 100%;
   bottom: 0;
   right: 0;
   background-color: var(--red-color);
@@ -105,6 +105,7 @@ export default {
   padding: 0.3rem;
   font-weight: 500;
   cursor: pointer;
+  /* margin-top: 20px !important; */
 }
 .btn_checkout:hover {
   background-color: var(--btn-color);

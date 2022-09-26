@@ -142,6 +142,15 @@ export default {
 <style lang="scss" scoped>
 .noItem {
   margin-top: 58vh !important ;
+  animation: timeOut 5s linear;
+}
+@keyframes timeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .noorder {
   display: flex;

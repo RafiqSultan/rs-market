@@ -1,56 +1,64 @@
-<template>
-  <body>
-    <div class="container">
-      <div class="layout-cart">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="details">
-              <span class="remove" @click="removeItem(item)"
-                ><i class="fas fa-xmark"></i
-              ></span>
-              <div class="col-lg-6">
-                <div class="img">
-                  <img
-                    src="https://www.gizmochina.com/wp-content/uploads/2018/07/Samsung-Galaxy-Note9-SD845-458x344.jpg"
-                    alt=""
-                  />
-                </div>
+<!-- <template> -->
+  <!-- <div
+    layoutShow
+    class="layoutShow layoutHiden"
+    :class="{ layoutShow: this.showContent == 'active' }"
+  > -->
+  <!-- <div class="container">
+    <div class="popup">
+      <slot />
+      <button class="popup-close" @click="TogglePopup()">Close Popup</button>
+    </div> -->
+
+    <!-- <div class="row">
+        <div class="col-lg-6">
+          <div class="details">
+            <span class="remove" @click="removeLayout()"
+              ><i class="fas fa-xmark"></i
+            ></span>
+            <div class="col-lg-6">
+              <div class="img">
+                <img
+                  src="https://www.gizmochina.com/wp-content/uploads/2018/07/Samsung-Galaxy-Note9-SD845-458x344.jpg"
+                  alt=""
+                />
               </div>
-              <div class="col-lg-6">
-                <div class="info">
-                  <div class="info-1">
-                    <h4>model Name</h4>
-                    <span>Type</span>
+            </div>
+            <div class="col-lg-6">
+              <div class="info">
+                <div class="info-1">
+                  <h4>model Name</h4>
+                  <span>Type</span>
+                </div>
+                <div class="info-2">
+                  <p>
+                    Lorem ipsum dolor sit amet minus asperiores accusantium
+                    ullam unde praesentium quos labore placeat officiis.
+                  </p>
+                </div>
+                <div class="info-3">
+                  <h5>colors</h5>
+                  <div class="colors">
+                    <div class="red"></div>
+                    <div class="white"></div>
+                    <div class="blue"></div>
+                    <div class="red"></div>
                   </div>
-                  <div class="info-2">
-                    <p>
-                      Lorem ipsum dolor sit amet minus asperiores accusantium
-                      ullam unde praesentium quos labore placeat officiis.
-                    </p>
+                </div>
+                <div class="info-4">
+                  <h5>Rate</h5>
+                  <div class="star">
+                    <i class="fa-solid fa-star" v-for="star in 4"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
                   </div>
-                  <div class="info-3">
-                    <h5>colors</h5>
-                    <div class="colors">
-                      <div class="red"></div>
-                      <div class="white"></div>
-                      <div class="blue"></div>
-                      <div class="red"></div>
-                    </div>
-                  </div>
-                  <div class="info-4">
-                    <h5>Rate</h5>
-                    <div class="star">
-                      <i class="fa-solid fa-star" v-for="star in 4"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                  </div>
-                  <div class="info-5">
-                    <button>
-                      <i class="fas fa-shopping-cart"></i>
-                      ADD TO CART
-                    </button>
-                    <p class="price">
-                      <!-- <span :class="{ discount: phoneDiscount > 0 }" id=""
+                </div>
+                <div class="info-5">
+                  <button>
+                    <i class="fas fa-shopping-cart"></i>
+                    ADD TO CART
+                  </button>
+                  <p class="price"> -->
+    <!-- <span :class="{ discount: phoneDiscount > 0 }" id=""
                     >${{ phonePrice }}</span
                   >
                   <span v-if="phoneDiscount > 0">
@@ -60,28 +68,79 @@
                         phonePrice - phonePrice * (phoneDiscount / 100)
                       )
                     }}</span> -->
-                      $3000
-                    </p>
-                  </div>
+    <!-- $3000 -->
+    <!-- </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </body>
-</template>
+      </div>-->
+  <!-- </div>
+ </div> -->
+<!-- </template> --> 
+<!-- <script>
+export default {
+  props: {
+    show: String,
+  },
+  data() {
+    return {
+      showContent: show,
+    };
+  },
+  methods: {
+    removeLayout() {
+      console.log("SSSSSSS");
+      console.log(this.showContent);
+      this.showContent = null;
+      console.log("RRRRRRRRRRr");
+      console.log(this.showContent);
+    },
+  },
+};
+</script>
+<style scoped> -->
+<!-- /* .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.5);
 
-<style scoped>
-/* body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+/* .layoutShow {
   position: absolute;
-  background: rgba(1, 1, 1, 0.5) !important;
+  background-color: rgba(1, 1, 1, 0.1) !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  bottom: 100%;
   width: 100%;
   height: 100vh !important;
-  top: 10%;
-  z-index: 100000 !important;
-} */
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.layoutHiden {
+  position: absolute;
+  background-color: rgba(1, 1, 1, 0.1) !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  bottom: 100%;
+  width: 100%;
+  height: 100vh !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .details {
   display: flex;
   width: 100%;
@@ -89,7 +148,7 @@
   /* padding: 5px 10px; */
   overflow: hidden !important;
   position: relative;
-  top: 50% !important;
+  /* top: 50% !important; */
   box-shadow: 0 3px 3px var(--blue-dark-color);
 }
 .details .remove {
@@ -217,4 +276,4 @@ img {
   font-size: 18px;
   margin-top: 4%;
 }
-</style> 
+</style>  */ -->
