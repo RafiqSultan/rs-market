@@ -20,6 +20,10 @@
               <nav class="navbar navbar-expand-lg">
                 <button
                   class="navbar-toggler"
+                  @click="
+                    menuActive = 'menu';
+                    showLayout('menu');
+                  "
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#navbarNavDropdown-main"
@@ -196,6 +200,7 @@ export default {
     return {
       profileAcive: null,
       searchActive: null,
+      menuActive: null,
       cartActive: null,
       favoriteActive: null,
       itemCart: [],
@@ -218,21 +223,6 @@ export default {
   },
   methods: {
     showLayout(option) {
-      // Profile check
-      // if (this.profileAcive === "profile") {
-      //   this.profileAcive = null;
-      // } else {
-      //   this.profileAcive = option;
-      //   this.searchActive = null;
-      // }
-
-      // if (this.searchActive === "search") {
-      //   this.searchActive = null;
-      // } else {
-      //   this.searchActive = option;
-      //   this.profileAcive = null;
-      // }
-      // Profile check
       if (option == "profile") {
         if (this.profileAcive == "profile") {
           this.profileAcive = null;
@@ -252,6 +242,16 @@ export default {
           this.showCart = null;
         }
       }
+      // Menu check
+      else if (option == "menu") {
+        if (this.menuActive == "menu") {
+          this.searchActive = null;
+          this.profileAcive = null;
+          this.showCart = null;
+        } else {
+          this.menuActive = null;
+        }
+      }
     },
     showCartItem() {
       if (this.profileAcive == "profile" || this.searchActive == "search") {
@@ -265,30 +265,30 @@ export default {
       }
     },
   },
-  mounted() {
-    console.log(this.$store.state.cartItemNumber);
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-          });
-        }
-        this.itemCart = results;
-        this.cartNumber = results.length;
-      });
-  },
+  // mounted() {
+  //   console.log(this.$store.state.cartItemNumber);
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //         });
+  //       }
+  //       this.itemCart = results;
+  //       this.cartNumber = results.length;
+  //     });
+  // },
 };
 </script>
 <style scoped>
