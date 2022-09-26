@@ -49,7 +49,7 @@ export default {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  z-index: 1000;
+  z-index: 1000 !important;
   padding: 0.3rem;
   overflow: hidden !important;
   padding-bottom: 0 !important;
@@ -69,7 +69,7 @@ export default {
   /* background: #f00; */
 }
 .cartItem .img {
-  width: 30%;
+  width: 80%;
   height: 60px;
   overflow: hidden;
 }
@@ -97,7 +97,7 @@ export default {
 }
 
 .btn_checkout {
-  position: absolute;
+  position: relative;
   bottom: 0;
   right: 0;
   background-color: var(--red-color);
@@ -105,7 +105,7 @@ export default {
   padding: 0.3rem;
   font-weight: 500;
   cursor: pointer;
-  /* margin-top: 20px !important; */
+  margin-top: -12px !important;
 }
 .btn_checkout:hover {
   background-color: var(--btn-color);

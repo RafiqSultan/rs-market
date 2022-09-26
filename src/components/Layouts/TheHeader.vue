@@ -64,7 +64,7 @@
                       <router-link
                         tag="a"
                         class="nav-link hvr-underline-from-center"
-                        to="/contact"
+                        :to="encodeURI('/contact')"
                         >Contact US</router-link
                       >
                     </li>
@@ -178,8 +178,8 @@
           </ul>
         </div>
         <!-- Show Cart Item -->
-        <div v-if="showCart == 'show' && this.itemCart.length > 0">
-          <CartItem :cartItem="itemCart" />
+        <div v-if="(showCart == 'show') & (totalQty > 0)">
+          <CartItem />
         </div>
       </div>
     </div>
@@ -188,11 +188,16 @@
 <!-- Script  -->
 <script>
 import CartItem from "../CartItem.vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
-  // setup() {
-  //   const item = inject("addNumberTo");
-  // },
+  setup() {
+    const store = useStore();
+
+    return {
+      cartNumber: computed(() => store.getters.getCart),
+    };
+  },
   components: {
     CartItem,
   },
@@ -203,9 +208,7 @@ export default {
       menuActive: null,
       cartActive: null,
       favoriteActive: null,
-      itemCart: [],
       showCart: null,
-      cartNumber: 0,
     };
   },
   computed: {
@@ -243,15 +246,14 @@ export default {
         }
       }
       // Menu check
-      else if (option == "menu") {
-        if (this.menuActive == "menu") {
-          this.searchActive = null;
-          this.profileAcive = null;
-          this.showCart = null;
-        } else {
-          this.menuActive = null;
-        }
-      }
+      // else if (option == "menu") {
+      //   if (this.menuActive == "menu") {
+      //     this.searchActive = null;
+      //     this.profileAcive = null;
+      //   } else {
+      //     this.menuActive = null;
+      //   }
+      // }
     },
     showCartItem() {
       if (this.profileAcive == "profile" || this.searchActive == "search") {
@@ -530,7 +532,7 @@ export default {
   .sec-navbar .search {
     position: absolute;
     top: 100% !important;
-    width: 350px;
+    width: 360px;
     margin-left: 0;
   }
   .sec-navbar .user-setting {

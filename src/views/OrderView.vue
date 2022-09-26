@@ -191,6 +191,7 @@ export default {
 }
 .img img {
   height: 100%;
+  width: fit-content;
 }
 @media (max-width: 768px) {
   .head .model,
