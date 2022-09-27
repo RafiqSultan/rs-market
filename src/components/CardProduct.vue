@@ -114,7 +114,21 @@
                         </div>
                       </div>
                       <div class="info-5">
-                        <button>
+                        <button
+                          @click="
+                            addProduct(
+                              phoneId,
+                              type,
+                              phoneModel,
+                              phoneImg,
+                              phonePrice,
+                              phoneDiscount,
+                              quantity,
+                              cart
+                            );
+                            isOpen = false;
+                          "
+                        >
                           <i class="fas fa-shopping-cart"></i>
                           ADD TO CART
                         </button>
@@ -206,7 +220,7 @@ export default {
         type: type,
         model: phoneModel,
         img: phoneImg,
-        price: phonePrice,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
         discount: phoneDiscount,
         quantity: quantity,
         cart: true,
@@ -230,7 +244,7 @@ export default {
         type: type,
         model: phoneModel,
         img: phoneImg,
-        price: phonePrice,
+        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
         discount: phoneDiscount,
         quantity: quantity,
         cart: true,
