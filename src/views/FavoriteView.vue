@@ -141,7 +141,7 @@ export default {
 
 <style lang="scss" scoped>
 .noItem {
-  margin-top: 61.2vh !important ;
+  margin-top: 58vh !important ;
   animation: timeOut 5s linear;
 }
 @keyframes timeOut {

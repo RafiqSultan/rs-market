@@ -1,114 +1,91 @@
 <template>
   <TheHeader />
-  <div class="container-fluid title-brand">
-    <div class="container">
-      <!-- Samsung Product -->
-      <div class="row">
-        <div class="title">
-          <div class="img">
-            <img src="../assets/samsung-logo.png" alt="samsung" />
-          </div>
-          <div class="showAll">
-            <router-link tag="a" to="/products"> Show All</router-link>
-          </div>
+  <div class="container">
+    <!-- Samsung Product -->
+    <div class="row">
+      <div class="title col-lg-12">
+        <div class="img">
+          <img src="../assets/samsung-logo.png" alt="samsung" />
+        </div>
+        <div class="showAll">
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="container-fluid back-grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="samsungCard">
-            <CardProduct
-              v-for="phone in samsung"
-              :key="phone.id"
-              :phoneId="phone.id"
-              :type="phone.type"
-              :phoneModel="phone.model"
-              :phonePrice="phone.price"
-              :phoneImg="phone.image"
-              :cart="phone.cart"
-              :quantity="phone.quantity"
-              :phoneDiscount="phone.discount"
-            />
-          </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="samsungCard">
+          <CardProduct
+            v-for="phone in samsung"
+            :key="phone.id"
+            :phoneId="phone.id"
+            :type="phone.type"
+            :phoneModel="phone.model"
+            :phonePrice="phone.price"
+            :phoneImg="phone.image"
+            :cart="phone.cart"
+            :quantity="phone.quantity"
+            :phoneDiscount="phone.discount"
+          />
         </div>
       </div>
     </div>
-  </div>
-  <!-- Apple Product -->
-  <div class="container-fluid title-brand">
-    <div class="container">
-      <div class="row">
-        <div class="title">
-          <div class="img">
-            <img src="../assets/apple_logo.png" alt="apple" />
-          </div>
-          <div class="showAll">
-            <router-link tag="a" to="/products"> Show All</router-link>
-          </div>
+    <!-- Apple Product -->
+    <div class="row">
+      <div class="title">
+        <div class="img">
+          <img src="../assets/apple_logo.png" alt="apple" />
+        </div>
+        <div class="showAll">
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid back-grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="appleCard">
-            <CardProduct
-              v-for="phone in apple"
-              :key="phone.id"
-              :phoneId="phone.id"
-              :type="phone.type"
-              :phoneModel="phone.model"
-              :phonePrice="phone.price"
-              :phoneImg="phone.image"
-              :cart="phone.cart"
-              :quantity="phone.quantity"
-              :phoneDiscount="phone.discount"
-            />
-          </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="appleCard">
+          <CardProduct
+            v-for="phone in apple"
+            :key="phone.id"
+            :phoneId="phone.id"
+            :type="phone.type"
+            :phoneModel="phone.model"
+            :phonePrice="phone.price"
+            :phoneImg="phone.image"
+            :cart="phone.cart"
+            :quantity="phone.quantity"
+            :phoneDiscount="phone.discount"
+          />
         </div>
       </div>
     </div>
-  </div>
-  <!-- Handfree Product  -->
-  <div class="container-fluid title-brand">
-    <div class="container">
-      <div class="row">
-        <div class="title">
-          <div class="img handfree">
-            <img src="../assets/handsfree.png" alt="handfree" />
-            <h5 class="handfree">HandsFree</h5>
-          </div>
-          <div class="showAll">
-            <router-link tag="a" to="/products"> Show All</router-link>
-          </div>
+    <!-- Handfree Product  -->
+    <div class="row">
+      <div class="title">
+        <div class="img handfree">
+          <img src="../assets/handsfree.png" alt="handfree" />
+          <h5 class="handfree">HandsFree</h5>
+        </div>
+        <div class="showAll">
+          <router-link tag="a" to="/products"> Show All</router-link>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid back-grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="handsfree">
-            <CardProduct
-              v-for="handfree in handsfree"
-              :key="handfree.id"
-              :phoneId="handfree.id"
-              :type="handfree.type"
-              :phoneModel="handfree.model"
-              :phonePrice="handfree.price"
-              :phoneImg="handfree.image"
-              :cart="handfree.cart"
-              :quantity="handfree.quantity"
-              :phoneDiscount="handfree.discount"
-            />
-          </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="handsfree">
+          <CardProduct
+            v-for="handfree in handsfree"
+            :key="handfree.id"
+            :phoneId="handfree.id"
+            :type="handfree.type"
+            :phoneModel="handfree.model"
+            :phonePrice="handfree.price"
+            :phoneImg="handfree.image"
+            :cart="handfree.cart"
+            :quantity="handfree.quantity"
+            :phoneDiscount="handfree.discount"
+          />
         </div>
       </div>
     </div>
@@ -138,41 +115,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title-brand {
-  background: rgba($color: #5bafe5, $alpha: 0.5);
-  height: fit-content;
-  max-height: 80px;
-  margin-top: 5.5rem;
-  margin-bottom: 2rem;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-evenly !important;
-  overflow: hidden;
-  position: relative;
-}
 .title {
-  display: flex;
-  background: rgba($color: #5bafe5, $alpha: 0.5);
-  height: 100%;
-  border-radius: 10px;
+  display: flex !important;
+  text-align: center !important;
+  justify-content: space-evenly !important;
+  margin-top: 5.5rem;
   text-align: center;
-  margin: auto;
+  margin-bottom: 2rem;
+  background: rgba($color: #5bafe5, $alpha: 0.5);
+  height: 90px;
+  overflow: hidden;
+  border-radius: 10px;
+
   .img {
     width: auto;
     height: 60px;
     text-align: center;
     display: flex;
-    margin-top: 0;
+    margin-top: 1%;
     img {
       height: auto;
     }
-  }
-  .handfree {
-    color: #000;
-    z-index: 100;
-    margin-top: auto;
-    font-size: 2.5rem;
-    font-weight: bold;
+    .handfree {
+      color: #000;
+      z-index: 100;
+      margin: auto;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
   }
   .showAll {
     margin: auto;
@@ -181,7 +151,7 @@ export default {
     background-color: var(--red-color);
     border-radius: 5px;
   }
-  showAll:hover {
+  .showAll:hover {
     background-color: var(--btn-color);
   }
   a {
@@ -189,11 +159,6 @@ export default {
     font-size: 16px;
     font-weight: 500;
   }
-}
-
-.back-grid {
-  background-color: #fff;
-  border-radius: 20px;
 }
 .samsungCard,
 .handsfree,
@@ -203,8 +168,16 @@ export default {
   gap: 10px;
 }
 @media (max-width: 991px) {
-  .title-brand {
+  .title {
     margin-top: 7.5rem;
+  }
+  .img {
+    width: 35% !important;
+    // height: fit-content;
+  }
+  img {
+    width: 100%;
+    height: auto;
   }
 }
 @media (max-width: 768px) {
@@ -215,48 +188,46 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
   }
+  .title img {
+    width: auto;
+    display: flex;
+    margin-top: 10%;
+  }
+  .handfree {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    display: flex;
+  }
+  .handfree h5 {
+    text-align: center;
+    margin-top: 25px !important;
+  }
+
+  // img {
+  //   height: auto;
+  // }
 }
 
 @media (max-width: 576px) {
+  .img {
+    width: auto;
+    height: 60px;
+    margin: auto;
+  }
+
   .handfree img {
     display: none;
   }
   .handfree h5 {
     margin-left: 0 !important;
-    font-size: 30px !important;
   }
 }
 @media (max-width: 550px) {
   .appleCard,
   .samsungCard,
   .handsfree {
-    margin-left: 10% !important;
+    margin-left: 20% !important;
     text-align: center;
-  }
-}
-@media (max-width: 380px) {
-  .title .img {
-    width: 60% !important;
-    height: fit-content;
-    max-height: 60px;
-  }
-  img {
-    width: 100%;
-    height: auto;
-  }
-  .showAll {
-    margin: auto;
-    margin-right: 3%;
-    padding: 0.2rem 0.5rem !important;
-  }
-  .handfree {
-    text-align: center;
-
-    margin-left: 0 !important;
-  }
-  .handfree h5 {
-    font-size: 25px !important;
-    margin-top: 5px !important;
   }
 }
 </style>

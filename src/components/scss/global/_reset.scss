@@ -14,25 +14,7 @@
 	padding: 0 ;
 	box-sizing: border-box !important ;
 }
-html {
-    overflow-x: hidden;
-    scroll-padding-top: 1rem;
-    scroll-behavior: smooth;
-}
 
-html::-webkit-scrollbar {
-    width: .5rem;
-	background: #08a0ff;
-}
-
-html::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-html::-webkit-scrollbar-thumb {
-    background: #f00;
-    border-radius: 1rem;
-}
 body {
 	background-color: #f2f2f2 !important;
 	font-family: 'Open Sans', sans-ser;

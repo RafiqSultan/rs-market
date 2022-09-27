@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <section class="product-line">
       <div class="discounted">
         <!-- Tital -->
@@ -12,12 +12,8 @@
         </div>
         <!-- Carsouel Card -->
         <MyCarousel ContentOfCarousel="newProduct" />
-      </div>
-    </section>
 
-    <!-- Tital Discount -->
-    <section class="product-line">
-      <div class="discounted">
+        <!-- Tital Discount -->
         <div class="row">
           <div class="col-md-12">
             <h2 class="title">
@@ -27,12 +23,7 @@
         </div>
         <!-- Carsouel Card -->
         <MyCarousel ContentOfCarousel="discount" />
-      </div>
-    </section>
-
-    <!-- Tital -->
-    <section class="product-line">
-      <div class="discounted">
+        <!-- Tital -->
         <div class="row">
           <div class="col-md-12">
             <h2 class="title">
@@ -345,11 +336,10 @@ h2::after {
 .show2 {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 400px;
   overflow: hidden;
   text-align: right;
   transition-delay: 1s;
-  margin: 10px;
 }
 .show2 {
   text-align: left !important;

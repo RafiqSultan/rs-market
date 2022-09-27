@@ -44,9 +44,7 @@
             :class="{ isActive: isCart == true }"
             ><i class="fa fa-cart-shopping"></i
           ></span>
-          <span class="hvr-rectangle-in" @click="isOpen = true"
-            ><i class="fa-solid fa-eye"></i>
-          </span>
+          <span class="hvr-rectangle-in"><i class="fa-solid fa-eye"></i></span>
 
           <span
             class="hvr-rectangle-in"
@@ -68,79 +66,6 @@
           ></span>
         </div>
       </div>
-      <teleport to="body">
-        <div class="modal" v-if="isOpen == true">
-          <!-- <ModalView @close="isOpen = false" /> -->
-          <ModalView>
-            <div class="row">
-              <div class="">
-                <div class="details">
-                  <span class="remove" @click="isOpen = false"
-                    ><i class="fas fa-xmark"></i
-                  ></span>
-                  <!-- Img in Details -->
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                    <div class="img">
-                      <img :src="phoneImg" alt="img" />
-                    </div>
-                  </div>
-                  <!-- Content Details -->
-                  <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="info">
-                      <div class="info-1">
-                        <h5>{{ phoneModel }}</h5>
-                        <span>Type :{{ type }}</span>
-                      </div>
-                      <div class="info-2">
-                        <span>Network:5G GSM - Android 11</span>
-                        <span>RAM:6GB-Memory:128GB</span>
-                        <span>Camera:12-12-16 Mp- Size:6.5inch</span>
-                        <span>Battery:4500 mAh-:128GB</span>
-                      </div>
-                      <div class="info-3">
-                        <h5>Colors</h5>
-                        <div class="colors">
-                          <div class="red"></div>
-                          <div class="white"></div>
-                          <div class="blue"></div>
-                          <div class="red"></div>
-                        </div>
-                      </div>
-                      <div class="info-4">
-                        <h5>Rate</h5>
-                        <div class="star">
-                          <i class="fa-solid fa-star" v-for="star in 4"></i>
-                          <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                      </div>
-                      <div class="info-5">
-                        <button>
-                          <i class="fas fa-shopping-cart"></i>
-                          ADD TO CART
-                        </button>
-                        <p class="price">
-                          <span :class="{ discount: phoneDiscount > 0 }" id=""
-                            >${{ phonePrice }}</span
-                          >
-                          <span v-if="phoneDiscount > 0">
-                            $
-                            {{
-                              Math.floor(
-                                phonePrice - phonePrice * (phoneDiscount / 100)
-                              )
-                            }}</span
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ModalView>
-          <!-- Finsh Slot Card Modal -->
-        </div>
-      </teleport>
     </div>
   </div>
 </template>
@@ -149,7 +74,6 @@
 <script>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import ModalView from "./ModalView.vue";
 export default {
   props: [
     "phoneId",
@@ -168,7 +92,6 @@ export default {
       isCart: null,
       disco: this.disc,
       addNum: [],
-      isOpen: false,
     };
   },
   methods: {
@@ -190,6 +113,7 @@ export default {
       }
     },
   },
+
   setup() {
     const store = useStore();
     function addProduct(
@@ -253,27 +177,12 @@ export default {
       addToFav,
     };
   },
-  components: { ModalView },
 };
 </script>
 
 <style lang="scss" scoped>
 // *Style Card Product
 
-.modal {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(1, 1, 1, 0.5);
-  width: 100% !important;
-  height: 100vh !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000 !important;
-}
 .cardProduct {
   height: 330px;
   width: 250px;
@@ -289,7 +198,6 @@ export default {
   text-align: center;
   overflow: hidden;
   margin: 10px 0;
-  position: relative;
 
   //   Style img
   .img {

@@ -23,7 +23,7 @@ const router = createRouter({
       component:ProductView
     },
     {
-      path:encodeURI('/contact'),
+      path: '/contact',
       name: 'contact',
       component:ContactView
     },
