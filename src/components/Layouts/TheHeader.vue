@@ -20,6 +20,10 @@
               <nav class="navbar navbar-expand-lg">
                 <button
                   class="navbar-toggler"
+                  @click="
+                    menuActive = 'menu';
+                    showLayout('menu');
+                  "
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#navbarNavDropdown-main"
@@ -60,7 +64,7 @@
                       <router-link
                         tag="a"
                         class="nav-link hvr-underline-from-center"
-                        to="/contact"
+                        :to="encodeURI('/contact')"
                         >Contact US</router-link
                       >
                     </li>
@@ -174,8 +178,8 @@
           </ul>
         </div>
         <!-- Show Cart Item -->
-        <div v-if="showCart == 'show' && this.itemCart.length > 0">
-          <CartItem :cartItem="itemCart" />
+        <div v-if="(showCart == 'show') & (totalQty > 0)">
+          <CartItem />
         </div>
       </div>
     </div>
@@ -184,11 +188,16 @@
 <!-- Script  -->
 <script>
 import CartItem from "../CartItem.vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
-  // setup() {
-  //   const item = inject("addNumberTo");
-  // },
+  setup() {
+    const store = useStore();
+
+    return {
+      cartNumber: computed(() => store.getters.getCart),
+    };
+  },
   components: {
     CartItem,
   },
@@ -196,11 +205,10 @@ export default {
     return {
       profileAcive: null,
       searchActive: null,
+      menuActive: null,
       cartActive: null,
       favoriteActive: null,
-      itemCart: [],
       showCart: null,
-      cartNumber: 0,
     };
   },
   computed: {
@@ -218,21 +226,6 @@ export default {
   },
   methods: {
     showLayout(option) {
-      // Profile check
-      // if (this.profileAcive === "profile") {
-      //   this.profileAcive = null;
-      // } else {
-      //   this.profileAcive = option;
-      //   this.searchActive = null;
-      // }
-
-      // if (this.searchActive === "search") {
-      //   this.searchActive = null;
-      // } else {
-      //   this.searchActive = option;
-      //   this.profileAcive = null;
-      // }
-      // Profile check
       if (option == "profile") {
         if (this.profileAcive == "profile") {
           this.profileAcive = null;
@@ -252,6 +245,15 @@ export default {
           this.showCart = null;
         }
       }
+      // Menu check
+      // else if (option == "menu") {
+      //   if (this.menuActive == "menu") {
+      //     this.searchActive = null;
+      //     this.profileAcive = null;
+      //   } else {
+      //     this.menuActive = null;
+      //   }
+      // }
     },
     showCartItem() {
       if (this.profileAcive == "profile" || this.searchActive == "search") {
@@ -265,30 +267,30 @@ export default {
       }
     },
   },
-  mounted() {
-    console.log(this.$store.state.cartItemNumber);
-    fetch(
-      "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
-    )
-      .then((Response) => {
-        if (Response.ok) {
-          return Response.json();
-        }
-      })
-      .then((data) => {
-        const results = [];
-        for (const id in data) {
-          results.push({
-            id: id,
-            phoneImg: data[id].img,
-            phoneModel: data[id].model,
-            phonePrice: data[id].price,
-          });
-        }
-        this.itemCart = results;
-        this.cartNumber = results.length;
-      });
-  },
+  // mounted() {
+  //   console.log(this.$store.state.cartItemNumber);
+  //   fetch(
+  //     "https://mobile-market-bf248-default-rtdb.firebaseio.com/itemCart.json"
+  //   )
+  //     .then((Response) => {
+  //       if (Response.ok) {
+  //         return Response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       const results = [];
+  //       for (const id in data) {
+  //         results.push({
+  //           id: id,
+  //           phoneImg: data[id].img,
+  //           phoneModel: data[id].model,
+  //           phonePrice: data[id].price,
+  //         });
+  //       }
+  //       this.itemCart = results;
+  //       this.cartNumber = results.length;
+  //     });
+  // },
 };
 </script>
 <style scoped>
@@ -374,7 +376,7 @@ export default {
 .sec-navbar .search {
   position: absolute;
   top: 103% !important;
-  z-index: 1000;
+  z-index: 100;
   margin-left: 70px;
   opacity: 1;
   transform: scaleY(1);
@@ -420,7 +422,7 @@ export default {
 
 .sec-navbar .profile_form {
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   right: 5%;
   transform: scaleY(1);
   width: 150px;
@@ -478,15 +480,16 @@ export default {
     height: fit-content;
   }
   .sec-navbar .collapse {
-    background-color: var(--back-color) !important;
-    z-index: 1000 !important;
+    z-index: 100 !important;
     transition: none !important;
+    border: none !important;
   }
   .sec-navbar .navbar-toggler {
-    background-color: var(--blue-color);
-    color: var(--red-color) !important;
-    font-size: 22px !important;
+    background-color: #111;
+    color: var(--blue-color) !important;
+    font-size: 20px !important;
     border: none !important;
+    outline: none;
   }
   .sec-navbar .collapse .navbar-expand-lg {
     z-index: 1000 !important;
@@ -500,6 +503,7 @@ export default {
   .sec-navbar .collapse a:hover {
     z-index: 100;
     width: fit-content;
+    border: none !important;
   }
   .sec-navbar .search {
     position: absolute;
@@ -528,7 +532,7 @@ export default {
   .sec-navbar .search {
     position: absolute;
     top: 100% !important;
-    width: 350px;
+    width: 360px;
     margin-left: 0;
   }
   .sec-navbar .user-setting {

@@ -133,5 +133,6 @@ export default {
 <style scoped>
 .carousel {
   margin: 50px 0 !important;
+  background-color: rgba(91, 175, 229, 0.3);
 }
 </style>

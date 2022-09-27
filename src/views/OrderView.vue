@@ -107,7 +107,7 @@ export default {
 
 <style scoped>
 .noItem {
-  margin-top: 58vh !important ;
+  margin-top: 61.2vh !important ;
   animation: timeOut 5s linear;
 }
 .noorder {
@@ -117,8 +117,6 @@ export default {
   flex-direction: column;
   height: 500px;
   margin-top: -69vh !important;
-  /* transition-delay: 10s !important;
-  transition-duration: 5s; */
 }
 @keyframes timeOut {
   0% {
@@ -193,6 +191,7 @@ export default {
 }
 .img img {
   height: 100%;
+  width: fit-content;
 }
 @media (max-width: 768px) {
   .head .model,
