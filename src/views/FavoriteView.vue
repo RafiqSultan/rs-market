@@ -12,8 +12,16 @@
             <i class="fa-solid fa-star" v-for="star in 4"></i>
             <i class="fa-solid fa-star-half-stroke"></i>
           </div>
-          <p>
-            $<span id="price">{{ item.price }}</span>
+          <p class="price">
+            <span :class="{ discount: item.discount > 0 }" id=""
+              >${{ item.price }}</span
+            >
+            <span v-if="item.discount > 0">
+              $
+              {{
+                Math.floor(item.price - item.price * (item.discount / 100))
+              }}</span
+            >
           </p>
         </div>
 
@@ -55,15 +63,15 @@
                     <!-- Img in Details -->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                       <div class="img">
-                        <img :src="phoneImg" alt="img" />
+                        <img :src="item.img" alt="img" />
                       </div>
                     </div>
                     <!-- Content Details -->
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                       <div class="info">
                         <div class="info-1">
-                          <h5>{{ phoneModel }}</h5>
-                          <span>Type :{{ type }}</span>
+                          <h5>{{ item.model }}</h5>
+                          <span>Type :{{ item.type }}</span>
                         </div>
                         <div class="info-2">
                           <span>Network:5G GSM - Android 11</span>
@@ -107,15 +115,15 @@
                             ADD TO CART
                           </button>
                           <p class="price">
-                            <span :class="{ discount: phoneDiscount > 0 }" id=""
-                              >${{ phonePrice }}</span
+                            <span :class="{ discount: item.discount > 0 }" id=""
+                              >${{ item.price }}</span
                             >
-                            <span v-if="phoneDiscount > 0">
+                            <span v-if="item.discount > 0">
                               $
                               {{
                                 Math.floor(
-                                  phonePrice -
-                                    phonePrice * (phoneDiscount / 100)
+                                  item.price -
+                                    item.price * (item.discount / 100)
                                 )
                               }}</span
                             >
@@ -350,7 +358,26 @@ export default {
     }
   }
 }
-
+.price {
+  color: var(--blue-dark-color);
+  margin: auto;
+  font-size: 22px;
+  font-weight: 500;
+}
+.discount {
+  margin: 0 0.5rem;
+  font-size: 20px;
+  position: relative;
+}
+.discount::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 2px;
+  left: -8px;
+  top: 50%;
+  background-color: var(--red-color);
+}
 .addCard {
   height: 50px;
   width: 100%;
