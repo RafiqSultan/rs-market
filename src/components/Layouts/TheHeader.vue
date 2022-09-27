@@ -246,14 +246,14 @@ export default {
         }
       }
       // Menu check
-      // else if (option == "menu") {
-      //   if (this.menuActive == "menu") {
-      //     this.searchActive = null;
-      //     this.profileAcive = null;
-      //   } else {
-      //     this.menuActive = null;
-      //   }
-      // }
+      else if (option == "menu") {
+        if (this.menuActive == "menu") {
+          this.searchActive = null;
+          this.profileAcive = null;
+        } else {
+          this.menuActive = null;
+        }
+      }
     },
     showCartItem() {
       if (this.profileAcive == "profile" || this.searchActive == "search") {
