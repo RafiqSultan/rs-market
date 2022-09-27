@@ -64,7 +64,7 @@
                       <router-link
                         tag="a"
                         class="nav-link hvr-underline-from-center"
-                        :to="encodeURI('/contact')"
+                        :to="'/contact'"
                         >Contact US</router-link
                       >
                     </li>

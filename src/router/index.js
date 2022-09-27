@@ -23,7 +23,8 @@ const router = createRouter({
       component:ProductView
     },
     {
-      path:encodeURI('/contact'),
+      path:'/contact',
+      redirect:'/contact',
       name: 'contact',
       component:ContactView
     },
