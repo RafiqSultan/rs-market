@@ -31,7 +31,7 @@
 
         <div class="card-option col-md-2 col-sm-4 col-xs-4">
           <h5 class="heading">OS</h5>
-          <ul>
+          <ul class="card-text">
             <li>Samsung</li>
             <li>Apple</li>
             <li>Google</li>
