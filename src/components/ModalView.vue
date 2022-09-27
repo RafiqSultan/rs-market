@@ -154,10 +154,13 @@
 .info-5 .price span:first-child {
   position: relative;
 }
+.info-5 .price span:last-child {
+  color: var(--red-color);
+}
 .discount::before {
   content: "";
   position: absolute;
-  width: 140%;
+  width: 120%;
   height: 2px;
   left: -8px;
   top: 50%;

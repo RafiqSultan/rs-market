@@ -181,7 +181,7 @@ export default {
     background-color: var(--red-color);
     border-radius: 5px;
   }
-  showAll:hover {
+  .showAll:hover {
     background-color: var(--btn-color);
   }
   a {
@@ -230,7 +230,7 @@ export default {
   .appleCard,
   .samsungCard,
   .handsfree {
-    margin-left: 10% !important;
+    margin-left: 20% !important;
     text-align: center;
   }
 }

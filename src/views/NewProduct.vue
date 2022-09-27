@@ -366,7 +366,7 @@ h2::after {
   margin-top: 50px;
 }
 .show2 img {
-  width: 65%;
+  width: 55%;
   height: 100%;
   border-radius: 20px !important;
 }
@@ -436,6 +436,11 @@ h2::after {
     padding-right: 0.5rem;
     height: auto;
   }
+
+  .show1 img,
+  .show2 img {
+    height: auto !important;
+  }
 }
 @media (max-width: 991px) {
   .show1 img,
@@ -444,6 +449,10 @@ h2::after {
     width: 100%;
     height: 100%;
     border-radius: 20px !important;
+  }
+  .show1 img,
+  .show2 img {
+    height: auto !important;
   }
 }
 </style>

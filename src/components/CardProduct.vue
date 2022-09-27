@@ -206,7 +206,7 @@ export default {
         type: type,
         model: phoneModel,
         img: phoneImg,
-        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        price: phonePrice,
         discount: phoneDiscount,
         quantity: quantity,
         cart: true,
@@ -230,7 +230,7 @@ export default {
         type: type,
         model: phoneModel,
         img: phoneImg,
-        price: Math.floor(phonePrice - phonePrice * (phoneDiscount / 100)),
+        price: phonePrice,
         discount: phoneDiscount,
         quantity: quantity,
         cart: true,
@@ -335,7 +335,7 @@ export default {
   .discount::before {
     content: "";
     position: absolute;
-    width: 140%;
+    width: 120%;
     height: 2px;
     left: -8px;
     top: 50%;
