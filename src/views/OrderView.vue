@@ -144,7 +144,7 @@ export default {
   background-color: var(--btn-color);
 }
 .checkout {
-  margin-top: 120px;
+  margin-top: 168px;
 }
 
 .head {

@@ -24,7 +24,7 @@ const router = createRouter({
     },
     {
       path:'/contact',
-      redirect:'/contact',
+      
       name: 'contact',
       component:ContactView
     },
