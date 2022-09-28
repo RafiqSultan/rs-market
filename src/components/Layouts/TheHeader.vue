@@ -472,8 +472,11 @@ export default {
 }
 
 @media (max-width: 991px) {
-  .sec-navbar .logo {
-    text-align: center;
+  .sec-navbar {
+    padding: 0.4rem 0 0 0 !important;
+  }
+  .sec-navbar .navbar-brand {
+    display: none;
   }
   .sec-navbar .user-setting {
     margin-top: 0;
@@ -510,6 +513,23 @@ export default {
     top: 102% !important;
     width: 600px;
     margin-left: 0;
+  }
+  .favorite,
+  .cart {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -8px;
+    left: -3px;
+    background-color: var(--red-color) !important;
+    z-index: 1000;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 550;
+    padding: 5px;
+    line-height: 10px;
+    color: #fff;
   }
 }
 @media (max-width: 768px) {

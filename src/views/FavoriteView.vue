@@ -161,7 +161,7 @@ export default {
   justify-content: flex-end;
   flex-direction: column;
   height: 500px;
-  margin-top: -69vh !important;
+  margin-top: -65vh !important;
 }
 .noorder img {
   width: 200px;
@@ -182,7 +182,7 @@ export default {
 }
 // *Style Card Product
 .favCart {
-  margin-top: 146px;
+  margin-top: 100px;
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;

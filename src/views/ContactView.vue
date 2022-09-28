@@ -207,7 +207,7 @@ export default {
 }
 @media (max-width: 991px) {
   .section-title {
-    margin-top: 7rem;
+    margin-top: 5rem;
   }
   .about {
     width: 75% !important;

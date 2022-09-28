@@ -145,6 +145,9 @@ export default { components: { TheHeader, TheFooter } };
   color: #fff !important;
 }
 @media (max-width: 991px) {
+  .title {
+    margin-top: 5.5rem !important;
+  }
 }
 @media (max-width: 768px) {
   input {

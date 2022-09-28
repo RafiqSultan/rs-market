@@ -124,7 +124,7 @@ export default {
     width: 250px;
     max-height: 290px;
     position: absolute;
-    top: 6.5rem !important;
+    top: 3.7rem !important;
     right: calc(5% + 1%);
   }
 }
@@ -133,7 +133,7 @@ export default {
     width: 200px;
     max-height: 290px;
     position: absolute;
-    top: 6.5rem !important;
+    top: 3.7rem !important;
     right: calc(5% + 1%);
   }
 }
@@ -142,7 +142,7 @@ export default {
     width: 200px;
     max-height: 290px;
     position: absolute;
-    top: 6.2rem !important;
+    top: 3.3rem !important;
     right: calc(5% + 1%);
   }
 }

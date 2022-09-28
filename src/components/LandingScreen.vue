@@ -162,7 +162,7 @@ export default {};
   display: flex;
   background-color: #111;
   border-radius: 1rem;
-  margin: 4.1rem 0 2rem 0;
+  margin: 4.5rem 0 2rem 0;
   height: 400px;
   padding: 1rem 3rem;
 }
@@ -277,6 +277,9 @@ video {
   }
 }
 @media (max-width: 576px) {
+  .landing {
+    margin-top: 4.2rem;
+  }
   .carousel-control-next {
     display: none;
   }
@@ -291,5 +294,10 @@ video {
     background: #fff;
     z-index: 1000 !important;
   } */
+}
+@media (max-width: 440px) {
+  .landing {
+    margin-top: 3.7rem;
+  }
 }
 </style>

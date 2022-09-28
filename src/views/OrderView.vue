@@ -116,7 +116,7 @@ export default {
   justify-content: flex-end;
   flex-direction: column;
   height: 500px;
-  margin-top: -69vh !important;
+  margin-top: -65vh !important;
 }
 @keyframes timeOut {
   0% {
@@ -144,7 +144,7 @@ export default {
   background-color: var(--btn-color);
 }
 .checkout {
-  margin-top: 168px;
+  margin-top: 100px;
 }
 
 .head {
@@ -194,6 +194,9 @@ export default {
   width: fit-content;
 }
 @media (max-width: 768px) {
+  .checkout {
+    margin-top: 50px !important;
+  }
   .head .model,
   .head .price,
   .head .quantity,
@@ -211,6 +214,9 @@ export default {
   }
 }
 @media (max-width: 991px) {
+  .checkout {
+    margin-top: 85px;
+  }
   .head {
     justify-content: flex-end !important;
     text-align: center;
@@ -226,6 +232,9 @@ export default {
 @media (max-width: 576px) {
   .cartItem .model {
     font-size: 20px;
+  }
+  .checkout {
+    margin-top: 40px !important;
   }
 }
 </style>

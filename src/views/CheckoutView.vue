@@ -306,7 +306,7 @@ export default {
   
 <style scoped>
 .checkout {
-  margin-top: 120px;
+  margin-top: 100px;
 }
 .head {
   display: flex;
@@ -453,9 +453,15 @@ button:focus {
     font-size: 1.5rem;
     font-weight: 550;
   }
+  .checkout {
+    margin-top: 80px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .checkout {
+    margin-top: 60px !important;
+  }
   .book,
   .book-img {
     width: 100px;

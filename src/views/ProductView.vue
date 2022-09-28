@@ -204,7 +204,7 @@ export default {
 }
 @media (max-width: 991px) {
   .title-brand {
-    margin-top: 7.5rem;
+    margin-top: 4.5rem;
   }
 }
 @media (max-width: 768px) {
