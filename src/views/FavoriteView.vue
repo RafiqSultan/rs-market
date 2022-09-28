@@ -129,20 +129,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(1, 1, 1, 0.5);
-  width: 100% !important;
-  height: 100vh !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000 !important;
-}
+// .modal {
+//   position: fixed !important;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba(1, 1, 1, 0.5);
+//   width: 100% !important;
+//   height: 100vh !important;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 1000 !important;
+// }
 .noItem {
   margin-top: 61.2vh !important ;
   animation: timeOut 5s linear;
